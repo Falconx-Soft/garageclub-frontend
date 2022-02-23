@@ -1,0 +1,20 @@
+.header-div{
+	position: relative;
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	
+}
+
+.header-heading{
+	text-align: center;
+	justify-content: center;
+}
+
+.header-heading{
+	font-size: larger;
+}
+
+.header-input{
+	width: 85%;
+}

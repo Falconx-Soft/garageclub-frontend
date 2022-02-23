@@ -1,0 +1,161 @@
+.addform{
+	padding: 20px;
+}
+
+/* input{
+	width: -webkit-fill-available;
+	padding: 10px;
+	border: none;
+	border-bottom: solid 1px rgb(0,0,0,0.2);
+	margin-bottom: 15px;
+	
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+/* input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input:focus{
+    outline: none;
+}  */
+
+.inputFieldDiv{
+	display: flex;
+	border-bottom: solid 1px rgb(0,0,0,0.2);
+	padding:10px;
+	position: relative;
+}
+
+.inputFieldLable{
+	width: 30%;
+}
+
+.inputFieldLable>p{
+	margin:0px;
+}
+
+.inputFieldInput{
+	width: 70%;
+}
+
+.inputFieldInput>input{
+	width: 90%;
+	border: none;
+	font-size: 14px;
+}
+
+.inputFieldInput>input::-webkit-outer-spin-button,
+.inputFieldInput>input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.inputFieldInput>input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.inputFieldInput>input:focus{
+    outline: none;
+} 
+
+.inputIcion{
+	position: absolute;
+}
+
+.addCoastBtn{
+	background-color:aquamarine;
+	cursor: pointer;
+	border:none;
+	width: 100%;
+	padding:15px;
+	border-radius: 20px;
+}
+
+.coastDiv > h1{
+	font-size:large;
+	text-align: center;
+}
+
+.cosatItem{
+	display: flex;
+	border-bottom: solid 1px rgb(0,0,0,0.2);
+}
+
+.cosatItemLeft{
+	width: 50%;
+}
+
+.cosatItemLeft>p{
+	font-size:small;
+}
+
+.cosatItemRight{
+	width: 50%;
+}
+
+.cosatItemRight>p{
+	font-size:small;
+	text-align: right;
+	margin-right: 10px;
+}
+
+.cosatItemTotal{
+	display: flex;
+}
+
+.cosatItemTotalLeft{
+	width: 50%;
+}
+
+.cosatItemTotalRight{
+	width: 50%;
+}
+
+.cosatItemTotalRight>p{
+	text-align: right;
+	margin-right: 10px;
+}
+
+
+.MuiTextField-root{
+	width: 100% !important;
+}
+
+.MuiSelect-icon{
+	display: none !important;
+}
+
+.matrialDropDownForm{
+	margin-right: 10px !important;
+}
+
+.inputWithIcion{
+	position: relative;
+}
+
+.inputIcion{
+	position: absolute;
+	right: 20px;
+    top: 40%;
+	cursor: pointer;
+}
+
+.inputTcionChecked{
+	color: green;
+}
+
+.referanceInputDiv{
+	display: flex !important;
+}
+
+.referanceInputDiv>p{
+	margin:0px;
+	margin-right: 20px;
+}

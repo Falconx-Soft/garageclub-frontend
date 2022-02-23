@@ -1,0 +1,22 @@
+.headDiv{
+	display:flex;
+	align-items:center;
+	padding-left: 20px;
+}
+
+.headDiv > h1{
+	width:100%;
+	text-align:center;
+}
+
+.sortingOptionDiv{
+	padding:20px;
+}
+
+.sortingLink{
+	cursor:pointer;
+	padding:20px;
+	box-shadow: 0px 2.98px 7.45px rgb(0,0,0,0.1);
+	z-index: 9999;
+	text-decoration: none;
+}

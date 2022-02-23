@@ -1,0 +1,46 @@
+.resultHeader-div{
+	padding:20px;
+	
+}
+
+.resultHeaderIner-div{
+	display: flex;
+	text-align: center;
+	background-color:green;
+	padding:10px;
+	color:white;
+
+}
+
+.resultHeaderIner-div-pink{
+	display: flex;
+	text-align: center;
+	background-color:pink;
+	padding:10px;
+	color:white;
+}
+
+.resultHeaderIner-div-black{
+	display: flex;
+	text-align: center;
+	background-color:black;
+	padding:10px;
+	color:white;
+}
+
+.resultHeaderIner-div>i{
+	padding-top: 10px;
+	color:white;
+}
+
+.resultLabel{
+	margin-left: 20px;
+}
+
+.resultLabel > p{
+	margin:0px
+}
+.resultHeader-heading{
+	font-size: larger;
+	margin:0px
+}

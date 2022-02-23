@@ -1,0 +1,21 @@
+.nav-div{
+	height: 20px;
+	display: flex;
+	justify-content: space-between;
+    align-items: center;
+	padding: 20px;
+	box-shadow: 0px 2.98px 7.45px rgb(0,0,0,0.1);
+}
+
+.nav-div-right-btn{
+	display: flex;
+}
+
+.nav-div-right-btn > a{
+	margin-left: 15px;
+	color: black;
+}
+
+i{
+	color:black;
+}

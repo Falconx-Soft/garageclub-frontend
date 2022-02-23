@@ -1,0 +1,8 @@
+.searchDiv{
+	display: flex;
+	justify-content: center;
+}
+
+.MuiFormControl-root{
+	max-width: 80% !important;
+}
