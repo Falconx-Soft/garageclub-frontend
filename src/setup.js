@@ -10,6 +10,9 @@ import ResultNav from './resultNav';
 import ResultsContent from './resultsContent';
 import Sorting from './sorting';
 import React from "react"
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import { TailSpin } from  'react-loader-spinner'
+import './spinner.css';
 export default function Setup() {
 
 	const [inputIcion, setinputIcion] = React.useState({"purchase":false,"sell":false});
@@ -53,38 +56,53 @@ export default function Setup() {
 				setComponents(temp);
 			})
     }, [])
-	const [formData, setFormData] = React.useState({reference:"", makeNmade: "", purchase: "", selling: "", type:"A", risk:""});
+	const [formData, setFormData] = React.useState({reference:"", makeNmade: "", purchase: "", selling: "", type:0, risk:""});
 	const [valoracion, setValoracion] = React.useState("REBU");
 	const [totalAmount, setTotalAmount] = React.useState(0);
+	console.log( typeof marginTemp,marginTemp,"&&&&&&&&&&&&&&&&&&&&&&&")
 	return (
 		<Router>
 			<Switch>
-				<Route exact path="/" >
-					<Nav url="/" />
-					<Header title="GET YOUR CAR" />
-					<GetItems sorting={sorting} marginTemp={marginTemp}/>
-				</Route>
+				{Object.keys(marginTemp).length>0?
+					<>
+					<Route exact path="/" >
+						<Nav url="/" />
+						<Header title="GET YOUR CAR" />
+						<GetItems sorting={sorting} marginTemp={marginTemp}/>
+					</Route>
 
-				<Route exact path="/sorting" >
+					<Route exact path="/result" >
+						<ResultNav/>
+						<ResultsContent components={components} setComponents={setComponents} formData={formData} setFormData={setFormData} setTotalAmount={setTotalAmount} totalAmount={totalAmount} inputIcion={inputIcion} setinputIcion={setinputIcion} valoracion={valoracion} marginTemp={marginTemp}/>
+					</Route>
+
+					<Route exact path="/sorting" >
 					<Sorting url="/sorting" sorting={sorting} setSorting={setSorting}/>
-				</Route>
+					</Route>
 
-				<Route exact path="/add" >
-					<Nav2 url="/add" />
-					<Header title="ADD DATA" />
-					<AddForm components={components} setComponents={setComponents} formData={formData} setFormData={setFormData} setTotalAmount={setTotalAmount} inputIcion={inputIcion} setinputIcion={setinputIcion} valoracion={valoracion} setValoracion={setValoracion}/>
-				</Route>
+					<Route exact path="/add" >
+						<Nav2 url="/add" />
+						<Header title="ADD DATA" />
+						<AddForm components={components} setComponents={setComponents} formData={formData} setFormData={setFormData} setTotalAmount={setTotalAmount} inputIcion={inputIcion} setinputIcion={setinputIcion} valoracion={valoracion} setValoracion={setValoracion}/>
+					</Route>
 
-				<Route exact path="/addComponents" >
-					<Nav2 url="/addComponents"/>
-					<Header title="ADD Components" />
-					<AddComponents components={components} setComponents={setComponents}/>
-				</Route>
-
-				<Route exact path="/result" >
-					<ResultNav/>
-					<ResultsContent components={components} setComponents={setComponents} formData={formData} setFormData={setFormData} setTotalAmount={setTotalAmount} totalAmount={totalAmount} inputIcion={inputIcion} setinputIcion={setinputIcion} valoracion={valoracion} marginTemp={marginTemp}/>
-				</Route>
+					<Route exact path="/addComponents" >
+						<Nav2 url="/addComponents"/>
+						<Header title="ADD Components" />
+						<AddComponents components={components} setComponents={setComponents}/>
+					</Route>
+					</>
+				:
+			
+					<div className="spinner">
+						<TailSpin
+							height="100"
+							width="100"
+							color='orange'
+							ariaLabel='loading'
+						/>
+					</div>
+				}
 
 			</Switch>
 		</Router>

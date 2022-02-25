@@ -9,3 +9,7 @@
 .MuiInputLabel-root{
 	color: black !important;
 }
+
+.homeRedirect{
+	display: none;
+}

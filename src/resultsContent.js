@@ -3,6 +3,7 @@ import './resultsContent.css';
 import './resultHeader.css';
 import React from "react";
 import CoastItems from "./coastItems";
+import { v4 as uuidv4 } from 'uuid';
 import {TextField,MenuItem,FormControl,Select,InputLabel} from '@material-ui/core';
 export default function ResultsContent(props) {
   let margin = 0;
@@ -14,280 +15,70 @@ export default function ResultsContent(props) {
     let netMargin = grossMargin/1.21;
     margin = Math.floor(netMargin - props.totalAmount);
   }
-  let colorOfBaner = "green";
-  if(margin > 0){
-  if(props.formData.purchase < 1000){
-    if(props.formData.type === "A"){
-      if(margin < 100){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    } else if(props.formData.type === "B"){
-      if(margin < 170){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }else{
-      if(margin < 250){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }
-  }else if(props.formData.purchase > 1000 && props.formData.purchase < 2000){
-    if(props.formData.type === "A"){
-      if(margin < 43){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    } else if(props.formData.type === "B"){
-      if(margin < 74){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }else{
-      if(margin < 108){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }
-  }else if(props.formData.purchase > 2000 && props.formData.purchase < 4000){
-    if(props.formData.type === "A"){
-      if(margin < 28){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    } else if(props.formData.type === "B"){
-      if(margin < 48){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }else{
-      if(margin < 71){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }
-  }else if(props.formData.purchase > 4000 && props.formData.purchase < 6000){
-    if(props.formData.type === "A"){
-      if(margin < 24){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    } else if(props.formData.type === "B"){
-      if(margin < 41){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }else{
-      if(margin < 60){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }
-  }else if(props.formData.purchase > 6000 && props.formData.purchase < 8000){
-    if(props.formData.type === "A"){
-      if(margin < 21){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    } else if(props.formData.type === "B"){
-      if(margin < 36){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }else{
-      if(margin < 54){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }
-  }else if(props.formData.purchase > 8000 && props.formData.purchase < 10000){
-    if(props.formData.type === "A"){
-      if(margin < 19){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    } else if(props.formData.type === "B"){
-      if(margin < 33){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }else{
-      if(margin < 49){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }
-  }else if(props.formData.purchase > 10000 && props.formData.purchase < 12500){
-    if(props.formData.type === "A"){
-      if(margin < 18){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    } else if(props.formData.type === "B"){
-      if(margin < 30){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }else{
-      if(margin < 44){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }
-  }else if(props.formData.purchase > 12500 && props.formData.purchase < 15000){
-    if(props.formData.type === "A"){
-      if(margin < 17){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    } else if(props.formData.type === "B"){
-      if(margin < 28){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }else{
-      if(margin < 42){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }
-  }else if(props.formData.purchase > 15000 && props.formData.purchase < 20000){
-    if(props.formData.type === "A"){
-      if(margin < 15){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    } else if(props.formData.type === "B"){
-      if(margin < 25){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }else{
-      if(margin < 37){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }
-  }else if(props.formData.purchase > 20000 && props.formData.purchase < 25000){
-    if(props.formData.type === "A"){
-      if(margin < 16){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    } else if(props.formData.type === "B"){
-      if(margin < 26){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }else{
-      if(margin < 39){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }
-  }else if(props.formData.purchase > 25000 && props.formData.purchase < 30000){
-    if(props.formData.type === "A"){
-      if(margin < 15){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    } else if(props.formData.type === "B"){
-      if(margin < 25){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }else{
-      if(margin < 36){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }
-  }else{
-    if(props.formData.type === "A"){
-      if(margin < 14){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    } else if(props.formData.type === "B"){
-      if(margin < 24){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }else{
-      if(margin < 35){
-        colorOfBaner = "red";
-      }else{
-        colorOfBaner = "green";
-      }
-    }
-  }
-  }else{
-    colorOfBaner = "black";
-  }
+
+  let colorOfBaner = "green"
+	for(let i=0; i<props.marginTemp.temp.length; i++){
+		console.log(props.amount_purchase,props.marginTemp.temp[i].min_purchase_range,)
+		if(props.amount_purchase > props.marginTemp.temp[i].min_purchase_range && props.amount_purchase < props.marginTemp.temp[i].max_purchase_range){
+			if(props.type === 0){
+			  if(props.amount_purchase< props.marginTemp.temp[i].typeA){
+				colorOfBaner="red";
+			  }else{
+				colorOfBaner="green";
+			  }
+			} else if(props.type === 1){
+			  if(props.amount_purchase< props.marginTemp.temp[i].typeB){
+				colorOfBaner="red";
+			  }else{
+				colorOfBaner="green";
+			  }
+			}else{
+			  if(props.amount_purchase< props.marginTemp.temp[i].typeC){
+				colorOfBaner="red";
+			  }else{
+				colorOfBaner="green";
+			  }
+			}
+		}
+	}
 
   function saveData(){
 		fetch('api/validations/', {
 			method: 'post',
 			headers: {'Content-Type':'application/json'},
-			body: 
-				{
+			body: JSON.stringify(
+        {
           "costs": [
-        
+            {
+              "uuid": uuidv4(),
+              "quantity": 2147483647,
+              "amount": 0,
+              "cost": 4
+            }
           ],
-          "uuid": "3fa85f64-5717-1234-b3fc-2c852f66afa2",
+          "uuid": uuidv4(),
           "calculation_type": 0,
-          "reference": "string",
+          "reference": props.formData.reference,
           "make": 0,
-          "model": "string",
+          "model": props.formData.makeNmade,
           "amount_purchase": props.formData.purchase,
           "purchase_vat": true,
           "amount_sale": props.formData.selling,
           "sale_vat": true,
           "margin": margin,
-          "type": 0,
-          "risk": 1
-        }
-			  
-		});
+          "type": props.formData.type,
+          "risk": props.formData.risk
+        } 
+      ) 
+		}).then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+    document.getElementById("homeRedirect").click();
 	};
-
-  console.log(colorOfBaner,"*******************")
 
   return (
 	  <>
@@ -367,9 +158,9 @@ export default function ResultsContent(props) {
           name = "type"
           disabled
           >
-          <MenuItem value="A">A</MenuItem>
-          <MenuItem value="B">B</MenuItem>
-          <MenuItem value="C">C</MenuItem>
+          <MenuItem value={0}>A</MenuItem>
+          <MenuItem value={1}>B</MenuItem>
+          <MenuItem value={2}>C</MenuItem>
         </Select>
     </FormControl>
 
@@ -389,9 +180,9 @@ export default function ResultsContent(props) {
         </Select>
     </FormControl>
     <CoastItems components={props.components} setTotalAmount={props.setTotalAmount}/>
+    <button className='submitBtn' onClick={saveData}>Save</button>
+    <a href="/" id='homeRedirect' className='homeRedirect'>Reload</a>
     </div>
-
-    <button onClick={saveData}>Save</button>
 	</>
   );
 }

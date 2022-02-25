@@ -37,9 +37,7 @@ export default function GetItems(props) {
     }
     const itemObj = temp.map(i => {
         if(i){
-            if(i.reference!==""){
-                return <Item keyNumber={i.reference} detail={i.model} key={i.id} amount_purchase={i.amount_purchase} amount_sale={i.amount_sale} id={i.id} risk={i.risk} margin={i.margin} setvalidation={setvalidation} validation={validation} setTemp={setTemp} type={i.type} marginTemp={props.marginTemp} />
-            }
+            return <Item keyNumber={i.reference} detail={i.model} key={i.id} amount_purchase={i.amount_purchase} amount_sale={i.amount_sale} id={i.id} risk={i.risk} margin={i.margin} setvalidation={setvalidation} validation={validation} setTemp={setTemp} type={i.type} marginTemp={props.marginTemp} />
         }
     })
     function handleChange(event) {

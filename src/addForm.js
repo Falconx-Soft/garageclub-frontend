@@ -20,49 +20,6 @@ export default function AddForm(props) {
         return (event.target.value)
       });
     }
-
-    // function handleIcionCheck(key){
-    //   if(key == "purchase"){
-    //     const purchaseIcion = document.getElementById("purchaseIcion");
-    //     if(purchaseIcion.classList.contains("inputTcionChecked")){
-    //       purchaseIcion.classList.remove("inputTcionChecked");
-    //       props.setinputIcion(prevValue => {
-    //         return{
-    //           purchase : false,
-    //           sell: prevValue.sell
-    //         }
-    //       });
-    //     }else{
-    //       purchaseIcion.classList.add("inputTcionChecked");
-    //       props.setinputIcion(prevValue => {
-    //         return{
-    //           purchase : true,
-    //           sell : prevValue.sell
-    //         }
-    //       });
-    //     }
-    //   }else{
-    //     const sellIcion = document.getElementById("sellIcion");
-    //     if(sellIcion.classList.contains("inputTcionChecked")){
-    //       sellIcion.classList.remove("inputTcionChecked");
-    //       props.setinputIcion(prevValue => {
-    //         return{
-    //           ...prevValue,
-    //           sell : false
-    //         }
-    //       });
-    //     }else{
-    //       sellIcion.classList.add("inputTcionChecked");
-    //       props.setinputIcion(prevValue => {
-    //         return{
-    //           ...prevValue,
-    //           sell : true
-    //         }
-    //       });
-    //     }
-    //   }
-    // }
-
     
     const location = useLocation()
     const {fromAddComponents} = location.state
@@ -120,9 +77,9 @@ export default function AddForm(props) {
           label="Type"
           name = "type"
         >
-          <MenuItem value="A">A</MenuItem>
-          <MenuItem value="B">B</MenuItem>
-          <MenuItem value="C">C</MenuItem>
+          <MenuItem value={0}>A</MenuItem>
+          <MenuItem value={1}>B</MenuItem>
+          <MenuItem value={2}>C</MenuItem>
         </Select>
     </FormControl>
 
