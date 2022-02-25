@@ -15,19 +15,19 @@ export default function Item(props) {
 		console.log(props.amount_purchase,props.marginTemp.temp[i].min_purchase_range,)
 		if(props.amount_purchase > props.marginTemp.temp[i].min_purchase_range && props.amount_purchase < props.marginTemp.temp[i].max_purchase_range){
 			if(props.type === 0){
-			  if(props.amount_purchase< props.marginTemp.temp[i].typeA){
+			  if(props.margin < props.marginTemp.temp[i].typeA){
 				colorOfBaner="red";
 			  }else{
 				colorOfBaner="green";
 			  }
 			} else if(props.type === 1){
-			  if(props.amount_purchase< props.marginTemp.temp[i].typeB){
+			  if(props.margin < props.marginTemp.temp[i].typeB){
 				colorOfBaner="red";
 			  }else{
 				colorOfBaner="green";
 			  }
 			}else{
-			  if(props.amount_purchase< props.marginTemp.temp[i].typeC){
+			  if(props.margin < props.marginTemp.temp[i].typeC){
 				colorOfBaner="red";
 			  }else{
 				colorOfBaner="green";
