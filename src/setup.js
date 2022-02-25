@@ -16,6 +16,27 @@ export default function Setup() {
 
 	const [sorting, setSorting] = React.useState("price");
 
+	const [marginTemp, setMarginTemp] = React.useState([]);
+	React.useEffect(function() {
+        fetch("api/profitability/")
+            .then(res => res.json())
+            .then(data =>{
+				let temp = [];
+				data.map(i => {
+					let temp2 = {"id":i.id, "min_purchase_range":i.min_purchase_range, "max_purchase_range":i.max_purchase_range, "typeA":i.typeA, "typeB":i.typeB, "typeC":i.typeC};
+					temp.push(temp2);
+				})
+				// console.log(temp);
+				setMarginTemp(preValues => {
+                    return{
+                        ...preValues,
+                        temp
+                    }
+                } 
+            );
+				
+			})
+    }, [])
 	const [components, setComponents] = React.useState([]);
 	React.useEffect(function() {
 		console.log("Featch components");
@@ -25,14 +46,14 @@ export default function Setup() {
 				let temp = [];
 				console.log("data",data);
 				data.map(i => {
-					let temp2 = {"id":i.id, "quantity":0, "name":i.description, "prince":i.amount};
+					let temp2 = {"id":i.id, "quantity":0, "name":i.description, "prince":i.amount,"priority":i.priority};
 					temp.push(temp2);
 				})
 				console.log(temp);
 				setComponents(temp);
 			})
     }, [])
-	const [formData, setFormData] = React.useState({makeNmade: "", purchase: "", selling: "", type:"", risk:""});
+	const [formData, setFormData] = React.useState({reference:"", makeNmade: "", purchase: "", selling: "", type:"A", risk:""});
 	const [valoracion, setValoracion] = React.useState("REBU");
 	const [totalAmount, setTotalAmount] = React.useState(0);
 	return (
@@ -41,7 +62,7 @@ export default function Setup() {
 				<Route exact path="/" >
 					<Nav url="/" />
 					<Header title="GET YOUR CAR" />
-					<GetItems sorting={sorting}/>
+					<GetItems sorting={sorting} marginTemp={marginTemp}/>
 				</Route>
 
 				<Route exact path="/sorting" >
@@ -62,7 +83,7 @@ export default function Setup() {
 
 				<Route exact path="/result" >
 					<ResultNav/>
-					<ResultsContent components={components} setComponents={setComponents} formData={formData} setFormData={setFormData} setTotalAmount={setTotalAmount} totalAmount={totalAmount} inputIcion={inputIcion} setinputIcion={setinputIcion} valoracion={valoracion}/>
+					<ResultsContent components={components} setComponents={setComponents} formData={formData} setFormData={setFormData} setTotalAmount={setTotalAmount} totalAmount={totalAmount} inputIcion={inputIcion} setinputIcion={setinputIcion} valoracion={valoracion} marginTemp={marginTemp}/>
 				</Route>
 
 			</Switch>

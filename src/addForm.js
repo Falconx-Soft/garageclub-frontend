@@ -71,15 +71,15 @@ export default function AddForm(props) {
     <div className="addform">
 		<form>
     <div className="referanceInputDiv">
-    <p>Referance</p>
+    <p>Operation</p>
       <FormControl className='matrialDropDownForm' variant="standard" sx={{ m: 1, minWidth: 120 }}>
           <Select
             labelId="demo-simple-select-standard-label"
             id="demo-simple-select-standard-typ"
             value={props.valoracion}
             onChange={handleValoracionChange}
-            label="reference"
-            name = "reference"
+            label="Operation"
+            name = "operation"
           >
             <MenuItem value="REBU">REBU</MenuItem>
             <MenuItem value="IVA">IVA</MenuItem>
@@ -89,7 +89,9 @@ export default function AddForm(props) {
 
     {/* <TextField id="standard-basic" label="Reference" type="text" onChange={handleChange} name="reference" value={props.formData.reference} variant="standard" /> */}
 
-    <TextField id="standard-basic" label="Make and Made" type="text" onChange={handleChange} name="makeNmade" value={props.formData.makeNmade} variant="standard" />
+    <TextField id="standard-basic" label="Reference" type="text" onChange={handleChange}  name="reference" value={props.formData.reference} variant="standard"/>
+    
+    <TextField id="standard-basic" label="Make and Model" type="text" onChange={handleChange} name="makeNmade" value={props.formData.makeNmade} variant="standard" />
 
     <div className="inputWithIcion">
       <TextField id="standard-basic" label="Purchase Amount" type="number" onChange={handleChange} name="purchase" value={props.formData.purchase} variant="standard" />

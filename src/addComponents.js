@@ -19,7 +19,14 @@ export default function AddComponents(props) {
 		})
 	}
 
+	console.log(props.components,"*****************")
+
+	props.components.sort(function(a, b) {
+		return  a.priority - b.priority;
+	  });
+
 	const itemObj = props.components.map(i => {
+		console.log(i.name,i.priority,"**************")
         return (
 			<div className="componentItem" key={i.id}>
 				<div className="componentLeftItem">
@@ -31,11 +38,12 @@ export default function AddComponents(props) {
 					<p>{i.name}</p>
 				</div>
 				<div className="componentRightItem">
-					<p>${i.prince}</p>
+					<p>€{i.prince}</p>
 				</div>
 			</div>
         )
     });
+	
 
 	return (
 		<div className="componentsForm">

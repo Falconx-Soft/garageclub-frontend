@@ -20,10 +20,8 @@ export default function ResultsContent(props) {
     if(props.formData.type === "A"){
       if(margin < 100){
         colorOfBaner = "red";
-        console.log(colorOfBaner,"@@@@@@@@@@@@");
       }else{
         colorOfBaner = "green";
-        console.log(colorOfBaner,"@@@@@@@@@@@@");
       }
     } else if(props.formData.type === "B"){
       if(margin < 170){
@@ -263,6 +261,32 @@ export default function ResultsContent(props) {
     colorOfBaner = "black";
   }
 
+  function saveData(){
+		fetch('api/validations/', {
+			method: 'post',
+			headers: {'Content-Type':'application/json'},
+			body: 
+				{
+          "costs": [
+        
+          ],
+          "uuid": "3fa85f64-5717-1234-b3fc-2c852f66afa2",
+          "calculation_type": 0,
+          "reference": "string",
+          "make": 0,
+          "model": "string",
+          "amount_purchase": props.formData.purchase,
+          "purchase_vat": true,
+          "amount_sale": props.formData.selling,
+          "sale_vat": true,
+          "margin": margin,
+          "type": 0,
+          "risk": 1
+        }
+			  
+		});
+	};
+
   console.log(colorOfBaner,"*******************")
 
   return (
@@ -274,7 +298,7 @@ export default function ResultsContent(props) {
         <i className="fa fa-check" aria-hidden="true"></i>
           <div className="resultLabel">
             <p>{props.formData.company}</p>
-            <h1 className="resultHeader-heading">${margin}</h1>
+            <h1 className="resultHeader-heading">€{margin}</h1>
           </div>
       </div>
       :
@@ -283,14 +307,14 @@ export default function ResultsContent(props) {
         <i className="fa fa-x" aria-hidden="true"></i>
           <div className="resultLabel">
             <p>{props.formData.company}</p>
-            <h1 className="resultHeader-heading">${margin}</h1>
+            <h1 className="resultHeader-heading">€{margin}</h1>
           </div>
       </div>:
       <div className="resultHeaderIner-div"> 
         <i className="fa fa-x" aria-hidden="true"></i>
           <div className="resultLabel">
             <p>{props.formData.company}</p>
-            <h1 className="resultHeader-heading">${margin}</h1>
+            <h1 className="resultHeader-heading">€{margin}</h1>
           </div>
       </div>
       }
@@ -299,13 +323,13 @@ export default function ResultsContent(props) {
 
     
     <FormControl className='matrialDropDownForm' variant="standard" sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-standard-label">Reference</InputLabel>
+        <InputLabel id="demo-simple-select-standard-label">Operation</InputLabel>
         <Select
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard-typ"
           value={props.valoracion}
-          label="reference"
-          name = "reference"
+          label="Operation"
+          name = "Operation"
           disabled
         >
           <MenuItem value="REBU">REBU</MenuItem>
@@ -313,7 +337,9 @@ export default function ResultsContent(props) {
         </Select>
     </FormControl>
 
-    <TextField id="standard-basic" label="Make and Made" type="text"  name="makeNmade" value={props.formData.makeNmade} variant="standard" disabled/>
+    <TextField id="standard-basic" label="Reference" type="text"  name="reference" value={props.formData.reference} variant="standard" disabled/>
+
+    <TextField id="standard-basic" label="Make and Model" type="text"  name="makeNmade" value={props.formData.makeNmade} variant="standard" disabled/>
 
     <div className="inputWithIcion">
       <TextField id="standard-basic" label="Purchase Amount" type="number"  name="purchase" value={props.formData.purchase} variant="standard" disabled/>
@@ -364,6 +390,8 @@ export default function ResultsContent(props) {
     </FormControl>
     <CoastItems components={props.components} setTotalAmount={props.setTotalAmount}/>
     </div>
+
+    <button onClick={saveData}>Save</button>
 	</>
   );
 }
