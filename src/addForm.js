@@ -94,8 +94,8 @@ export default function AddForm(props) {
           label="Risk"
           name = "risk"
         >
-          <MenuItem value={1}>2</MenuItem>
-          <MenuItem value={2}>1</MenuItem>
+          <MenuItem value={1}>1</MenuItem>
+          <MenuItem value={2}>2</MenuItem>
         </Select>
     </FormControl>
 

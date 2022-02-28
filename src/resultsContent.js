@@ -16,23 +16,23 @@ export default function ResultsContent(props) {
     margin = Math.floor(netMargin - props.totalAmount);
   }
 
-  let colorOfBaner = "green"
-	for(let i=0; i<props.marginTemp.temp.length; i++){
-		if(props.amount_purchase > props.marginTemp.temp[i].min_purchase_range && props.amount_purchase < props.marginTemp.temp[i].max_purchase_range){
-			if(props.type === 0){
-			  if(margin< props.marginTemp.temp[i].typeA){
+  let colorOfBaner = "pink"
+  for(let i=0; i<props.marginTemp.temp.length; i++){
+		if(props.formData.purchase > props.marginTemp.temp[i].min_purchase_range && props.formData.purchase < props.marginTemp.temp[i].max_purchase_range){
+			if(props.formData.type === 0){
+			  if(margin < props.marginTemp.temp[i].typeA){
 				colorOfBaner="red";
 			  }else{
 				colorOfBaner="green";
 			  }
-			} else if(props.type === 1){
-			  if(margin< props.marginTemp.temp[i].typeB){
+			} else if(props.formData.type === 1){
+			  if(margin < props.marginTemp.temp[i].typeB){
 				colorOfBaner="red";
 			  }else{
 				colorOfBaner="green";
 			  }
 			}else{
-			  if(margin< props.marginTemp.temp[i].typeC){
+			  if(margin < props.marginTemp.temp[i].typeC){
 				colorOfBaner="red";
 			  }else{
 				colorOfBaner="green";
@@ -153,7 +153,7 @@ export default function ResultsContent(props) {
 
     <div className="inputWithIcion">
       <TextField id="selling" label="Selling Amount" type="number"  name="selling" value={props.formData.selling} variant="standard" disabled/>
-      {props.inputIcion.sell ?
+      {props.valoracion === "REBU" ?
         <i className="fa fa-check inputIcion inputTcionChecked" id="sellIcion" aria-hidden="true"></i>:
         <i className="fa fa-check inputIcion" id="sellIcion" aria-hidden="true"></i>
       }
@@ -186,8 +186,8 @@ export default function ResultsContent(props) {
           name = "risk"
           disabled
         >
-          <MenuItem value={1}>2</MenuItem>
-          <MenuItem value={2}>1</MenuItem>
+          <MenuItem value={1}>1</MenuItem>
+          <MenuItem value={2}>2</MenuItem>
         </Select>
     </FormControl>
     <CoastItems components={props.components} setTotalAmount={props.setTotalAmount}/>
