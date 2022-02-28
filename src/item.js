@@ -10,9 +10,7 @@ import 'react-swipe-to-delete-component/dist/swipe-to-delete.css';
 export default function Item(props) {
 
 	let colorOfBaner = "green"
-	console.log(props.marginTemp,"*****************************")
 	for(let i=0; i<props.marginTemp.temp.length; i++){
-		console.log(props.amount_purchase,props.marginTemp.temp[i].min_purchase_range,)
 		if(props.amount_purchase > props.marginTemp.temp[i].min_purchase_range && props.amount_purchase < props.marginTemp.temp[i].max_purchase_range){
 			if(props.type === 0){
 			  if(props.margin < props.marginTemp.temp[i].typeA){

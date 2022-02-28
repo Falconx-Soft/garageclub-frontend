@@ -32,7 +32,7 @@ export default function GetItems(props) {
           });
     }else{
         temp.sort(function(a, b) {
-            return b.created_at - a.created_at;
+            return new Date(b.created_at) - new Date(a.created_at);
           });
     }
     const itemObj = temp.map(i => {
@@ -49,6 +49,8 @@ export default function GetItems(props) {
             validation.map((c) => {
                 var re = new RegExp(m, 'i');
                 if(c && c.reference.match(re)){
+                    hold.push(c);
+                }else if(c && c.model.match(re)){
                     hold.push(c);
                 }
             })

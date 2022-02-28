@@ -18,7 +18,6 @@ export default function ResultsContent(props) {
 
   let colorOfBaner = "green"
 	for(let i=0; i<props.marginTemp.temp.length; i++){
-		console.log(props.amount_purchase,props.marginTemp.temp[i].min_purchase_range,)
 		if(props.amount_purchase > props.marginTemp.temp[i].min_purchase_range && props.amount_purchase < props.marginTemp.temp[i].max_purchase_range){
 			if(props.type === 0){
 			  if(margin< props.marginTemp.temp[i].typeA){
@@ -43,41 +42,53 @@ export default function ResultsContent(props) {
 	}
 
   function saveData(){
-		fetch('api/validations/', {
-			method: 'post',
-			headers: {'Content-Type':'application/json'},
-			body: JSON.stringify(
-        {
-          "costs": [
-            {
-              "uuid": uuidv4(),
-              "quantity": 2147483647,
-              "amount": 0,
-              "cost": 4
-            }
-          ],
-          "uuid": uuidv4(),
-          "calculation_type": 0,
-          "reference": props.formData.reference,
-          "make": 0,
-          "model": props.formData.makeNmade,
-          "amount_purchase": props.formData.purchase,
-          "purchase_vat": true,
-          "amount_sale": props.formData.selling,
-          "sale_vat": true,
-          "margin": margin,
-          "type": props.formData.type,
-          "risk": props.formData.risk
-        } 
-      ) 
-		}).then(response => response.json())
-    .then(data => {
-      console.log('Success:', data);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
-    document.getElementById("homeRedirect").click();
+    if(props.formData.reference == ""){
+      document.getElementById("reference").style.border = "solid 1px red";
+    }else if(props.formData.makeNmade == ""){
+      document.getElementById("makeNmade").style.border = "solid 1px red";
+    }else if(props.formData.purchase == ""){
+      document.getElementById("purchase").style.border = "solid 1px red";
+    }else if(props.formData.selling == ""){
+      document.getElementById("selling").style.border = "solid 1px red";
+    }else if(props.formData.risk == ""){
+      document.getElementById("risk").style.border = "solid 1px red";
+    }else{
+      fetch('api/validations/', {
+        method: 'post',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(
+          {
+            "costs": [
+              {
+                "uuid": uuidv4(),
+                "quantity": 2147483647,
+                "amount": 0,
+                "cost": 4
+              }
+            ],
+            "uuid": uuidv4(),
+            "calculation_type": 0,
+            "reference": props.formData.reference,
+            "make": 0,
+            "model": props.formData.makeNmade,
+            "amount_purchase": props.formData.purchase,
+            "purchase_vat": true,
+            "amount_sale": props.formData.selling,
+            "sale_vat": true,
+            "margin": margin,
+            "type": props.formData.type,
+            "risk": props.formData.risk
+          } 
+        ) 
+      }).then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+      document.getElementById("homeRedirect").click();
+    }
 	};
 
   return (
@@ -128,12 +139,12 @@ export default function ResultsContent(props) {
         </Select>
     </FormControl>
 
-    <TextField id="standard-basic" label="Reference" type="text"  name="reference" value={props.formData.reference} variant="standard" disabled/>
+    <TextField id="reference" label="Reference" type="text"  name="reference" value={props.formData.reference} variant="standard" disabled/>
 
-    <TextField id="standard-basic" label="Make and Model" type="text"  name="makeNmade" value={props.formData.makeNmade} variant="standard" disabled/>
+    <TextField id="makeNmade" label="Make and Model" type="text"  name="makeNmade" value={props.formData.makeNmade} variant="standard" disabled/>
 
     <div className="inputWithIcion">
-      <TextField id="standard-basic" label="Purchase Amount" type="number"  name="purchase" value={props.formData.purchase} variant="standard" disabled/>
+      <TextField id="purchase" label="Purchase Amount" type="number"  name="purchase" value={props.formData.purchase} variant="standard" disabled/>
       {props.inputIcion.purchase ? 
       <i className="fa fa-check inputIcion inputTcionChecked" id="purchaseIcion" aria-hidden="true"></i> :
       <i className="fa fa-check inputIcion" id="purchaseIcion" aria-hidden="true"></i>
@@ -141,7 +152,7 @@ export default function ResultsContent(props) {
     </div>
 
     <div className="inputWithIcion">
-      <TextField id="standard-basic" label="Selling Amount" type="number"  name="selling" value={props.formData.selling} variant="standard" disabled/>
+      <TextField id="selling" label="Selling Amount" type="number"  name="selling" value={props.formData.selling} variant="standard" disabled/>
       {props.inputIcion.sell ?
         <i className="fa fa-check inputIcion inputTcionChecked" id="sellIcion" aria-hidden="true"></i>:
         <i className="fa fa-check inputIcion" id="sellIcion" aria-hidden="true"></i>
@@ -166,7 +177,7 @@ export default function ResultsContent(props) {
 
 
     <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-standard-label">Risk</InputLabel>
+        <InputLabel id="risk">Risk</InputLabel>
         <Select
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"

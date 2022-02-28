@@ -59,7 +59,6 @@ export default function Setup() {
 	const [formData, setFormData] = React.useState({reference:"", makeNmade: "", purchase: "", selling: "", type:0, risk:""});
 	const [valoracion, setValoracion] = React.useState("REBU");
 	const [totalAmount, setTotalAmount] = React.useState(0);
-	console.log( typeof marginTemp,marginTemp,"&&&&&&&&&&&&&&&&&&&&&&&")
 	return (
 		<Router>
 			<Switch>
