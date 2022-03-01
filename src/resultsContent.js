@@ -50,8 +50,6 @@ export default function ResultsContent(props) {
       document.getElementById("purchase").style.border = "solid 1px red";
     }else if(props.formData.selling == ""){
       document.getElementById("selling").style.border = "solid 1px red";
-    }else if(props.formData.risk == ""){
-      document.getElementById("risk").style.border = "solid 1px red";
     }else{
       fetch('api/validations/', {
         method: 'post',
@@ -77,7 +75,7 @@ export default function ResultsContent(props) {
             "sale_vat": true,
             "margin": margin,
             "type": props.formData.type,
-            "risk": props.formData.risk
+            "risk": props.formData.risk === "" ? 1 : props.formData.risk
           } 
         ) 
       }).then(response => response.json())
