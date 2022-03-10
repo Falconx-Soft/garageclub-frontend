@@ -1,4 +1,5 @@
 import './addComponents.css';
+import logo1 from './cost1.png';
 import React from 'react';
 import { Link } from 'react-router-dom';
 export default function AddComponents(props) {
@@ -19,26 +20,24 @@ export default function AddComponents(props) {
 		})
 	}
 
-	console.log(props.components,"*****************")
-
 	props.components.sort(function(a, b) {
 		return  a.priority - b.priority;
 	  });
 
 	const itemObj = props.components.map(i => {
-		console.log(i.name,i.priority,"**************")
         return (
 			<div className="componentItem" key={i.id}>
 				<div className="componentLeftItem">
-					<i className="fa fa-minus subtractQuantity" onClick={() => handleSubtractClick(i.id)} aria-hidden="true"></i>
-					<p className='noMargin'>{i.quantity}</p>
-					<i className="fa fa-plus addQuantity" onClick={() => handleAddClick(i.id)} aria-hidden="true"></i>
+					<img src={logo1} alt="Logo" />
 				</div>
 				<div className="componentCenerItem">
 					<p>{i.name}</p>
+					<p>{i.prince}€</p>
 				</div>
 				<div className="componentRightItem">
-					<p>€{i.prince}</p>
+					<i className="fa fa-minus subtractQuantity" onClick={() => handleSubtractClick(i.id)} aria-hidden="true"></i>
+					<p className='noMargin'>{i.quantity}</p>
+					<i className="fa fa-plus addQuantity" onClick={() => handleAddClick(i.id)} aria-hidden="true"></i>
 				</div>
 			</div>
         )
@@ -53,7 +52,7 @@ export default function AddComponents(props) {
 				state:{
 					fromAddComponents: true
 				}
-			}} ><input className='submitBtn' type="button" value="Add"></input></Link>
+			}} ><input className='submitBtn' type="button" value="CONFIRM"></input></Link>
 		</div>
 	);
 }

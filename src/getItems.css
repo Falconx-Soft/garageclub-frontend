@@ -6,3 +6,55 @@
 .MuiFormControl-root{
 	max-width: 80% !important;
 }
+
+.sliderDiv{
+	margin-top: 20px;
+	border-bottom: solid 8px #F2F2F7;
+	padding-left: 20px;
+	padding-bottom: 20px;
+}
+
+.filterOption{
+	width: 150px;
+	height: 40px;
+	left: 194px;
+	top: calc(50% - 40px/2);
+	background: #EEEEEE;
+	border-radius: 36px;
+	display: flex;
+	justify-content: center;
+	align-items:center;
+	cursor: pointer;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 20px;
+}
+
+.react-multi-carousel-item{
+	width: 180px !important;
+}
+
+.main-div{
+	position: relative;
+}
+
+.addDiv{
+	bottom: 20px;
+	right: 30px;
+	width: 172px;
+	height: 48px;
+	background: #353636;
+	box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.2);
+	border-radius: 50px;
+	position:fixed;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items:center;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 16px;
+	text-transform: uppercase;
+}

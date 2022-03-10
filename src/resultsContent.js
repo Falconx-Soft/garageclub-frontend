@@ -4,6 +4,7 @@ import './resultHeader.css';
 import React from "react";
 import CoastItems from "./coastItems";
 import { v4 as uuidv4 } from 'uuid';
+import { Link } from 'react-router-dom';
 import {TextField,MenuItem,FormControl,Select,InputLabel} from '@material-ui/core';
 export default function ResultsContent(props) {
   let margin = 0;
@@ -92,103 +93,68 @@ export default function ResultsContent(props) {
   return (
 	  <>
 	<div className="resultHeader-div">
-
-      {margin < 0 ? 
-      <div className="resultHeaderIner-div-black"> 
-        <i className="fa fa-check" aria-hidden="true"></i>
-          <div className="resultLabel">
-            <p>{props.formData.company}</p>
-            <h1 className="resultHeader-heading">€{margin}</h1>
-          </div>
+      <div className="resultHead">
+        <p className="resultHeadLabel">Valoraciones Details</p>
+        <Link className="resultHeadLink" to={{
+				pathname: "/add",
+				state:{
+					fromAddComponents: true
+				}
+			  }}><p className="resultHeadLink">Edit</p></Link>
       </div>
-      :
-      colorOfBaner === "red"?
-      <div className="resultHeaderIner-div-pink"> 
-        <i className="fa fa-x" aria-hidden="true"></i>
-          <div className="resultLabel">
-            <p>{props.formData.company}</p>
-            <h1 className="resultHeader-heading">€{margin}</h1>
-          </div>
-      </div>:
-      <div className="resultHeaderIner-div"> 
-        <i className="fa fa-x" aria-hidden="true"></i>
-          <div className="resultLabel">
-            <p>{props.formData.company}</p>
-            <h1 className="resultHeader-heading">€{margin}</h1>
-          </div>
+
+      <p className="resultTitel">porsche keynne Referencia</p>
+
+      <div className="resultForm">
+        <div className="resultFormItem">
+            <p className="resultFormItemLeft">Margin</p>
+            {margin < 0 ? 
+              <p className="resultHeaderIner-div-black">€{margin}</p>
+              :
+              colorOfBaner === "red"?
+              <p className="resultHeaderIner-div-pink">€{margin}</p>
+              :
+              <p className="resultHeaderIner-div">€{margin}</p>
+            }
+        </div>
+
+        <div className="resultFormItem">
+            <p className="resultFormItemLeft">Tipo de calculo</p>
+            <p className="resultFormItemRight">{props.valoracion}</p>
+        </div>
+
+        <div className="resultFormItem">
+            <p className="resultFormItemLeft">Reference</p>
+            <p className="resultFormItemRight">{props.formData.reference}</p>
+        </div>
+
+        <div className="resultFormItem">
+            <p className="resultFormItemLeft">Made and Model</p>
+            <p className="resultFormItemRight">{props.formData.makeNmade}</p>
+        </div>
+
+        <div className="resultFormItem">
+            <p className="resultFormItemLeft">Purchase Amount</p>
+            <p className="resultFormItemRight">{props.formData.purchase}€</p>
+        </div>
+
+        <div className="resultFormItem">
+            <p className="resultFormItemLeft">Selling Amount</p>
+            <p className="resultFormItemRight">{props.formData.selling}€</p>
+        </div>
+
+        <div className="resultFormItem">
+            <p className="resultFormItemLeft">Type</p>
+            <p className="resultFormItemRight">{props.formData.type}</p>
+        </div>
+
+        <div className="resultFormItem">
+            <p className="resultFormItemLeft">Risk</p>
+            <p className="resultFormItemRight">{props.formData.risk}</p>
+        </div>
+
       </div>
-      }
-    </div>
-    <div className="addform">
-
-    
-    <FormControl className='matrialDropDownForm' variant="standard" sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-standard-label">Operation</InputLabel>
-        <Select
-          labelId="demo-simple-select-standard-label"
-          id="demo-simple-select-standard-typ"
-          value={props.valoracion}
-          label="Operation"
-          name = "Operation"
-          disabled
-        >
-          <MenuItem value="REBU">REBU</MenuItem>
-          <MenuItem value="IVA">IVA</MenuItem>
-        </Select>
-    </FormControl>
-
-    <TextField id="reference" label="Reference" type="text"  name="reference" value={props.formData.reference} variant="standard" disabled/>
-
-    <TextField id="makeNmade" label="Make and Model" type="text"  name="makeNmade" value={props.formData.makeNmade} variant="standard" disabled/>
-
-    <div className="inputWithIcion">
-      <TextField id="purchase" label="Purchase Amount" type="number"  name="purchase" value={props.formData.purchase} variant="standard" disabled/>
-      {props.inputIcion.purchase ? 
-      <i className="fa fa-check inputIcion inputTcionChecked" id="purchaseIcion" aria-hidden="true"></i> :
-      <i className="fa fa-check inputIcion" id="purchaseIcion" aria-hidden="true"></i>
-      }
-    </div>
-
-    <div className="inputWithIcion">
-      <TextField id="selling" label="Selling Amount" type="number"  name="selling" value={props.formData.selling} variant="standard" disabled/>
-      {props.valoracion === "REBU" ?
-        <i className="fa fa-check inputIcion inputTcionChecked" id="sellIcion" aria-hidden="true"></i>:
-        <i className="fa fa-check inputIcion" id="sellIcion" aria-hidden="true"></i>
-      }
-    </div>
-
-    <FormControl className='matrialDropDownForm' variant="standard" sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-standard-label">Type</InputLabel >
-        <Select
-          labelId="demo-simple-select-standard-label"
-          id="demo-simple-select-standard"
-          value={props.formData.type}
-          label="Type"
-          name = "type"
-          disabled
-          >
-          <MenuItem value={0}>A</MenuItem>
-          <MenuItem value={1}>B</MenuItem>
-          <MenuItem value={2}>C</MenuItem>
-        </Select>
-    </FormControl>
-
-
-    <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="risk">Risk</InputLabel>
-        <Select
-          labelId="demo-simple-select-standard-label"
-          id="demo-simple-select-standard"
-          value={props.formData.risk}
-          label="Risk"
-          name = "risk"
-          disabled
-        >
-          <MenuItem value={1}>1</MenuItem>
-          <MenuItem value={2}>2</MenuItem>
-        </Select>
-    </FormControl>
-    <CoastItems components={props.components} setTotalAmount={props.setTotalAmount}/>
+    <CoastItems components={props.components} setTotalAmount={props.setTotalAmount} url="result"/>
     <button className='submitBtn' onClick={saveData}>Save</button>
     <a href="/" id='homeRedirect' className='homeRedirect'>Reload</a>
     </div>

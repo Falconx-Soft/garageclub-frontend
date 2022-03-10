@@ -7,31 +7,43 @@
 	align-items: center;
 	width: 100%;
 	border-bottom: solid 1px rgb(0,0,0,0.2);
+	position: relative;
 
 }
 
 .componentLeftItem{
 	display: flex;
 	align-items: center;
-	width: 25%;
 
 }
 
 .noMargin{
 	margin: 0px 10px;
 	font-size: 22px;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+	color: rgba(0, 0, 0, 0.87);
 }
 
 .componentCenerItem{
-	display: flex;
-	justify-content:center;
-	width: 50%;
+	margin-left: 10px;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 19px;
+	text-transform: capitalize;
+	color: rgba(0, 0, 0, 0.87);
 }
 
 .componentRightItem{
+	position: absolute;
 	display: flex;
-	flex-flow: column;
-	width: 25%;
+	align-items: center;
+	right:10px;
 
 }
 
@@ -41,18 +53,29 @@
 
 .subtractQuantity{
 	cursor: pointer;
+	color: rgba(0, 0, 0, 0.6);
+
 }
 
 .addQuantity{
 	cursor: pointer;
+	color: rgba(0, 0, 0, 0.6);
 }
 
 .submitBtn{
-	background-color:aquamarine;
-	cursor: pointer;
-	border:none;
 	width: 100%;
-	padding:15px;
-	border-radius: 20px;
-	margin-top: 20px;
+	height: 48px;
+	margin-top: 10px;
+	background: #353636;
+	border: 1px solid rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	color: white;
+	cursor: pointer;
+
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 19px;
+	letter-spacing: 1.25px;
+	text-transform: uppercase;
 }

@@ -34,6 +34,7 @@ export default function Item(props) {
 		}
 	}
 
+
 function DeleteBtn(){
 	console.log("Swiped",props.id)
 	fetch('api/validations/'+props.id, { method: 'DELETE' })
@@ -44,7 +45,6 @@ function DeleteBtn(){
 			}
 		})
 	})
-
 	props.setTemp(preData=>{
 		return preData.map((c) => {
 			if(c && c.id !== props.id){
@@ -68,18 +68,21 @@ function DeleteBtn(){
 	// deleteComponent={<DeleteComponent/>} // not default
 	disabled={false} // default
 	rtl={false} // default
-	
 	>
 		<div className="outer-div">
 			<div className="item-div">
-				{props.risk === 1 ?
-					<h1 className="item-image">A</h1>:
-					<h1 className="item-image">B</h1>
-				}
 				
 				<div className="item-detail-div">
-					<p>{props.keyNumber}</p>
-					<p>{props.detail}</p>
+					<p className="item-detail-keyNumber">{props.keyNumber}</p>
+					<p className="item-detail-detail">{props.detail}</p>
+					<div className="item-detail-list">
+						<p className="item-detail-list-data">TIPO {props.risk === 1 ? "A":"B"}
+						</p>
+						<i className="fa fa-circle icon"></i>
+						<p className="item-detail-list-data">{props.created_at.split("T")[0]}</p>
+						<i className="fa fa-circle icon"></i>
+						<p className="item-detail-list-data">{props.amount_purchase} €</p>
+					</div>
 				</div>
 				{props.margin < 0 ?
 					<div className="item-tag item-tag-black">
@@ -87,10 +90,10 @@ function DeleteBtn(){
 					</div>:
 					colorOfBaner === "red" ?
 					<div className="item-tag item-tag-red">
-						<p>{parseFloat(props.margin/props.amount_purchase).toFixed(2)}%</p>
+						<p>+{parseFloat(props.margin/props.amount_purchase).toFixed(2)}%</p>
 					</div>:
 					<div className="item-tag item-tag-green">
-						<p>{parseFloat(props.margin/props.amount_purchase).toFixed(2)}%</p>
+						<p>+{parseFloat(props.margin/props.amount_purchase).toFixed(2)}%</p>
 					</div>
 				}
 				

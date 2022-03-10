@@ -2,30 +2,6 @@
 	padding: 20px;
 }
 
-/* input{
-	width: -webkit-fill-available;
-	padding: 10px;
-	border: none;
-	border-bottom: solid 1px rgb(0,0,0,0.2);
-	margin-bottom: 15px;
-	
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-/* input[type=number] {
-  -moz-appearance: textfield;
-}
-
-input:focus{
-    outline: none;
-}  */
-
 .inputFieldDiv{
 	display: flex;
 	border-bottom: solid 1px rgb(0,0,0,0.2);
@@ -78,26 +54,70 @@ input:focus{
 	border-radius: 20px;
 }
 
-.coastDiv > h1{
+.coastDiv{
+	width: 100%;
+}
+
+.coastDivHead{
+	display: flex;
+	align-items:center;
+	justify-content: space-between;
+	width: 100%;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+.coastDivHead > h1{
 	font-size:large;
 	text-align: center;
 }
 
+.coastEditLink{
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 19px;
+	text-transform: uppercase;
+	color: #1084F1;
+	text-decoration: none;
+}
+
 .cosatItem{
 	display: flex;
+	padding-bottom: 10px;
 	border-bottom: solid 1px rgb(0,0,0,0.2);
+	margin-top: 10px;
+}
+
+.cosatItemLeft>p{
+	margin-left: 20px;
+	
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 24px;
 }
 
 .cosatItemLeft{
 	width: 50%;
+	display: flex;
+	align-items: center;
 }
 
-.cosatItemLeft>p{
-	font-size:small;
+.cosatItemLeft > img{
+	width: 32px;
+	height: 32px;
 }
 
 .cosatItemRight{
 	width: 50%;
+	
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 24px;
 }
 
 .cosatItemRight>p{
@@ -108,14 +128,26 @@ input:focus{
 
 .cosatItemTotal{
 	display: flex;
+	width: 100%;
+	margin-bottom: 20px;
 }
 
 .cosatItemTotalLeft{
 	width: 50%;
+	
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 24px;
 }
 
 .cosatItemTotalRight{
 	width: 50%;
+	
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 24px;
 }
 
 .cosatItemTotalRight>p{
@@ -133,7 +165,7 @@ input:focus{
 }
 
 .matrialDropDownForm{
-	margin-right: 10px !important;
+	width: 100%;
 }
 
 .inputWithIcion{
@@ -152,10 +184,134 @@ input:focus{
 }
 
 .referanceInputDiv{
-	display: flex !important;
+	width: 100%;
+	border: none;
+	outline:0px;
+	
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 19px;
 }
 
-.referanceInputDiv>p{
-	margin:0px;
-	margin-right: 20px;
+/************************************* Desgine update */
+
+.inputForm{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
+
+.inputDiv{
+	width: 100%;
+	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+	border: solid 1px rgba(0, 0, 0, 0.12);
+	
+}
+
+.inputDivInput{
+	width: 100%;
+	outline: none;
+	border: none;
+	
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 19px;
+}
+
+.inputDivInputPurchase{
+	width: 90%;
+	outline: none;
+	border: none;
+	
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 19px;
+}
+
+.euroSymbol{
+	margin: 0px;
+	width: 10%;
+	text-align: right;
+	margin: 5px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.coastLink{
+	width: 100%;
+	text-align: left !important;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 16px;
+	letter-spacing: 1.25px;
+	text-transform: uppercase;
+	color: #1084F1;
+	text-decoration: none;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+
+.confirmLink{
+	width: 100%;
+}
+
+.confirmBtn{
+	width: 100%;
+	height: 48px;
+	background: #353636;
+	border: 1px solid rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	border-radius: 4px;
+	color: white;
+	cursor: pointer;
+	
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 19px;
+	/* identical to box height */
+
+	letter-spacing: 1.25px;
+	text-transform: uppercase;
+}
+
+.cancelBtn{
+	width: 100%;
+	height: 48px;
+	background: white;
+	border: 1px solid #353636;
+	box-sizing: border-box;
+	border-radius: 4px;
+	color: black;
+	margin-top: 10px;
+	cursor: pointer;
+	
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 19px;
+	/* identical to box height */
+
+	letter-spacing: 1.25px;
+	text-transform: uppercase;
+}
+
+

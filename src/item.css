@@ -1,16 +1,57 @@
 .outer-div{
 	display: flex;
-	padding: 20px;
-	margin-left: 20px;
-	margin-right: 20px;
-	margin-top:20px;
-	box-shadow: 2.98px 2.98px 2.98px 2.98px rgb(0,0,0,0.1);
-	overflow: hidden;
+    padding-top: 18px;
+    overflow: hidden;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.08);
+	padding-bottom: 14px;
 }
 .item-div{
 	display: flex;
 	position: relative;
 	width: 100%;
+	z-index: 10;
+}
+
+.item-detail-keyNumber{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 22px;
+    color: #000000;
+}
+
+.item-detail-detail{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: rgb(31, 30, 30);
+}
+
+.item-detail-list{
+	display: flex;
+}
+
+.item-detail-list>i{
+	color:#000000;
+	font-size: 3px;
+	text-align: center;
+	display: flex;
+    align-items: center;
+}
+
+.item-detail-list-data{
+	margin: 0px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.icon{
+	margin: 0;
 }
 
 .hide{
@@ -27,6 +68,7 @@
 	border: none;
 	border-radius: 10px;
 	cursor: pointer;
+	z-index: 2;
 }
 
 .item-image{
@@ -39,36 +81,51 @@
 
 .item-detail-div > p{
 	margin: 0px;
+	margin-bottom: 5px;
 }
 
 .item-tag{
 	position: absolute;
-	right:0px;
-	padding: 10px;
-	border-radius: 5px;
-	min-width: 55px;
-	min-height: 35px;
-	right:-10px
+    right: 0px;
+    padding: 10px;
+    border-radius: 20px;
+    min-width: 55px;
+    min-height: 35px;
+    right: 26px;
+    top: 19px;
 }
 
 .item-tag-green{
-	background-color: green;
+	background-color: #33c431;
 	color: white;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 16px;
 }
 
 .item-tag-red{
-	background-color: red;
+	background-color: #eb3d2d;
 	color: white;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 16px;
 }
 
 .item-tag-black{
-	background-color: black;
+	background-color: #464646;
 	color: white;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 16px;
 }
 
 
 .item-tag > p{
 	margin: 0px;
+	font-size: 12px;
 }
 
 .jysSav{
@@ -83,4 +140,9 @@
 
 #delete-button{
 	color: red;
+}
+
+.fa-circle{
+	margin-right:10px;
+	margin-left: 10px;
 }

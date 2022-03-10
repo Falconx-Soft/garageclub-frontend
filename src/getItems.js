@@ -1,9 +1,32 @@
 import Item from './item'
 import './getItems.css';
 import React from "react"
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+import { Link } from 'react-router-dom';
 import {TextField} from '@material-ui/core';
 
 export default function GetItems(props) {
+
+    const responsive = {
+        superLargeDesktop: {
+          // the naming can be any, depends on you.
+          breakpoint: { max: 4000, min: 3000 },
+          items: 5
+        },
+        desktop: {
+          breakpoint: { max: 3000, min: 1024 },
+          items: 3
+        },
+        tablet: {
+          breakpoint: { max: 1024, min: 464 },
+          items: 2
+        },
+        mobile: {
+          breakpoint: { max: 464, min: 0 },
+          items: 1
+        }
+      };
 
     const [validation, setvalidation] = React.useState([]);
     const [temp, setTemp] = React.useState(validation);
@@ -37,7 +60,7 @@ export default function GetItems(props) {
     }
     const itemObj = temp.map(i => {
         if(i){
-            return <Item keyNumber={i.reference} detail={i.model} key={i.id} amount_purchase={i.amount_purchase} amount_sale={i.amount_sale} id={i.id} risk={i.risk} margin={i.margin} setvalidation={setvalidation} validation={validation} setTemp={setTemp} type={i.type} marginTemp={props.marginTemp} />
+            return <Item keyNumber={i.reference} detail={i.model} key={i.id} amount_purchase={i.amount_purchase} amount_sale={i.amount_sale} id={i.id} risk={i.risk} margin={i.margin} setvalidation={setvalidation} validation={validation} setTemp={setTemp} type={i.type} marginTemp={props.marginTemp} created_at={i.created_at} />
         }
     })
     function handleChange(event) {
@@ -57,13 +80,46 @@ export default function GetItems(props) {
             setTemp(hold);
         }
     }
+
+    function selectSort(name){
+        props.setSorting(name)
+    }
     
     return (
-        <div>
-            <div className="searchDiv">
+        <div className='main-div'>
+            {/* <div className="searchDiv">
                 <TextField id="standard-basic" label="Search" variant="standard" onChange={handleChange} />
+            </div> */}
+            <div className='sliderDiv'>
+                <Carousel responsive={responsive}
+                    swipeable={true}
+                    draggable={true}
+                    showDots={false}
+                    ssr={true} // means to render carousel on server-side.
+                    infinite={false}
+                    autoPlay={false}
+                    keyBoardControl={false}
+                    customTransition="none"
+                    transitionDuration={0}
+                    containerClass="carousel-container"
+                    removeArrowOnDeviceType={["tablet", "mobile"]}
+                    dotListClass="custom-dot-list-style"
+                    itemClass="carousel-item-padding-40-px"
+                >
+                <div className='filterOption' onClick={()=> selectSort("date")}>By Date</div>
+                <div className='filterOption' onClick={()=> selectSort("margin")}>By Margin</div>
+                <div className='filterOption' onClick={()=> selectSort("price")}>By Selling Price</div>
+                </Carousel>
             </div>
+
             {itemObj}
+
+            <Link to={{
+				pathname: "/add",
+				state:{
+					fromAddComponents: false
+				}
+			}}><div className='addDiv'>+ Create New</div></Link>
         </div>
     )
 }

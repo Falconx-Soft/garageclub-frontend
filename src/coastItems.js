@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import logo1 from './cost1.png';
 export default function CoastItems(props) {
 
 	var totalAmount = 0;
@@ -9,23 +11,29 @@ export default function CoastItems(props) {
 			return(
 				<>
 					<div className="cosatItem">
-					<div className="cosatItemLeft">
-						<p>{i.name}</p>
-					</div>
-					<div className="cosatItemRight">
-						<p><b>€{i.prince * i.quantity}</b></p>
-					</div>
+						<div className="cosatItemLeft">
+							<img src={logo1} alt="Logo" />
+							<p>{i.name}</p>
+						</div>
+						<div className="cosatItemRight">
+							<p><b>€{i.prince * i.quantity}</b></p>
+						</div>
 					</div>
 				</>
 			)
 		}
-        
     });
 
   return (
 	<>
 		<div className="coastDiv">
-			<h1>COSTES</h1>
+			<div className="coastDivHead">
+				<h1>Cost Details</h1>
+				{props.url == "addForm"? 
+				<Link to="/addComponents" className='coastEditLink'><p className='coastLinkLable'>EDIT</p></Link>:
+				null
+				}
+			</div>
 			{itemObj}
 		</div>
 

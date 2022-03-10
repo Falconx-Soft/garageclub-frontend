@@ -4,28 +4,30 @@
 }
 
 .resultHeaderIner-div{
-	display: flex;
 	text-align: center;
-	background-color:green;
-	padding:10px;
-	color:white;
-
+	background-color: green;
+	padding: 5px;
+	color: white;
+	border-radius: 20px;
+	font-size: smaller;
 }
 
 .resultHeaderIner-div-pink{
-	display: flex;
 	text-align: center;
-	background-color:red;
-	padding:10px;
-	color:white;
+	background-color: red;
+	padding: 5px;
+	color: white;
+	border-radius: 20px;
+	font-size: smaller;
 }
 
 .resultHeaderIner-div-black{
-	display: flex;
 	text-align: center;
-	background-color:black;
-	padding:10px;
-	color:white;
+	background-color: black;
+	padding: 5px;
+	color: white;
+	border-radius: 20px;
+	font-size: smaller;
 }
 
 .resultHeaderIner-div>i{
@@ -43,4 +45,24 @@
 .resultHeader-heading{
 	font-size: larger;
 	margin:0px
+}
+
+.resultFormItemLeft{
+	margin: 0;
+	
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+	color: rgba(0, 0, 0, 0.6);
+}
+
+.resultFormItemRight{
+	margin: 0;
+	
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+	color: rgba(0, 0, 0, 0.87);
 }

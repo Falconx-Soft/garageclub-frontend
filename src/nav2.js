@@ -13,20 +13,8 @@ export default function Nav2(props) {
 			}}><i className="fa fa-caret-left fa-2x"></i></Link>:
 			<Link to="/"><i className="fa fa-caret-left fa-2x"></i></Link>
 		}
-
-		{props.url === "/addComponents" ? 
-			<div className="nav-div-right-btn">
-				<Link to={{
-					pathname: "/add",
-					state:{
-						fromAddComponents: true
-					}
-				}}><i className="fa fa-caret-right fa-2x" aria-hidden="true"></i></Link>
-			</div>:
-			<div className="nav-div-right-btn">
-				<Link to="/result"><i className="fa fa-caret-right fa-2x" aria-hidden="true"></i></Link>
-			</div>
-		}
+		{props.url === "/addComponents" ? <p className='navLabel'>Add Cost</p>:
+		<p className='navLabel'>Create New Operation</p>}
     </div>
   );
 }

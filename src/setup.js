@@ -66,12 +66,10 @@ export default function Setup() {
 					<>
 					<Route exact path="/" >
 						<Nav url="/" />
-						<Header title="GET YOUR CAR" />
-						<GetItems sorting={sorting} marginTemp={marginTemp}/>
+						<GetItems sorting={sorting} marginTemp={marginTemp}  setSorting={setSorting}/>
 					</Route>
 
 					<Route exact path="/result" >
-						<ResultNav/>
 						<ResultsContent components={components} setComponents={setComponents} formData={formData} setFormData={setFormData} setTotalAmount={setTotalAmount} totalAmount={totalAmount} inputIcion={inputIcion} setinputIcion={setinputIcion} valoracion={valoracion} marginTemp={marginTemp}/>
 					</Route>
 
@@ -81,13 +79,11 @@ export default function Setup() {
 
 					<Route exact path="/add" >
 						<Nav2 url="/add" />
-						<Header title="ADD DATA" />
 						<AddForm components={components} setComponents={setComponents} formData={formData} setFormData={setFormData} setTotalAmount={setTotalAmount} inputIcion={inputIcion} setinputIcion={setinputIcion} valoracion={valoracion} setValoracion={setValoracion}/>
 					</Route>
 
 					<Route exact path="/addComponents" >
 						<Nav2 url="/addComponents"/>
-						<Header title="ADD Components" />
 						<AddComponents components={components} setComponents={setComponents}/>
 					</Route>
 					</>
