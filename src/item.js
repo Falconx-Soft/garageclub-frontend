@@ -1,6 +1,11 @@
 import './item.css';
 import React from "react"
 import 'reactjs-popup/dist/index.css';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import { Link } from 'react-router-dom';
+import logo1 from './cost1.png';
 
 // import SwipeToDelete from 'react-swipe-to-delete-component';
 import SwipeToDelete from 'react-swipe-to-delete-ios';
@@ -36,7 +41,6 @@ export default function Item(props) {
 
 
 function DeleteBtn(){
-	console.log("Swiped",props.id)
 	fetch('api/validations/'+props.id, { method: 'DELETE' })
 	props.setvalidation(preData=>{
 		return preData.map((c) => {
@@ -54,7 +58,151 @@ function DeleteBtn(){
 	})
 }
 
+let margin = 0; 
+const [state, setState] = React.useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  });
+
+  
+  const toggleDrawer = (anchor, open,
+	risk,
+	created_at,
+	purchase,
+	margin,
+	type,
+	calculation_type,
+	coast,
+	reference,
+	makeNmade,
+	) => (event) => {
+		if(created_at != undefined){
+			console.log(risk,created_at,purchase,margin,type,calculation_type,coast)
+		
+			props.settabData(preData =>{
+				return{
+					margin:margin,
+					valoracion:calculation_type==0 ? "REBU":"IVA",
+					purchase: purchase,
+					selling: 2,
+					type:type ==0 ? "A": type == 1 ? "B":"C",
+					risk:risk,
+					reference:reference,
+					makeNmade:makeNmade
+				}
+			})
+		}
+	props.setCostList([])
+	if(coast != null){
+		for(let i=0; i<coast.length;i++){
+			fetch("api/costs/"+coast[i].cost+"/")
+				.then(res => res.json())
+				.then(data => props.setCostList(costList => [...costList, data]))
+			}
+	}
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+  };
+
+  let count = 0;
+  const getCostItemList=props.costList.map(i => {
+	  console.log(count);
+	  count += 1;
+		return(
+			<>
+				<div className="cosatItem2">
+					<div className="cosatItemLeft">
+						<img src={logo1} alt="Logo" />
+						<p>{i.description}</p>
+					</div>
+					<div className="cosatItemRight">
+						<p><b>{i.amount}€</b></p>
+					</div>
+				</div>
+			</>
+		)
+	});
+
+
+  const list = (anchor) => (
+    <Box
+      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+    <List>
+	<>
+	<div className="resultHeader-div">
+      <div className="resultHead">
+        <p className="resultHeadLabel">Valoraciones Details</p>
+        <Link className="resultHeadLink" to={{
+				pathname: "/edit",
+				state:{
+					fromAddComponents: true
+				}
+			  }}><p className="resultHeadLink">Edit</p></Link>
+      </div>
+
+      <p className="resultTitel">porsche keynne Referencia</p>
+
+      	<div className="resultForm">
+			<div className="resultFormItem">
+				<p className="resultFormItemLeft">Margin</p>
+				{props.tabData.margin < 0 ? 
+				<p className="resultHeaderIner-div-black">€{props.tabData.margin}</p>
+				:
+				colorOfBaner === "red"?
+				<p className="resultHeaderIner-div-pink">€{props.tabData.margin}</p>
+				:
+				<p className="resultHeaderIner-div">€{props.tabData.margin}</p>
+				}
+			</div>
+
+			<div className="resultFormItem">
+				<p className="resultFormItemLeft">Valoracion</p>
+				<p className="resultFormItemRight">{props.tabData.valoracion}</p>
+			</div>
+
+			<div className="resultFormItem">
+				<p className="resultFormItemLeft">Purchase Amount</p>
+				<p className="resultFormItemRight">{props.tabData.purchase}€</p>
+			</div>
+
+			<div className="resultFormItem">
+				<p className="resultFormItemLeft">Selling Amount</p>
+				<p className="resultFormItemRight">{props.tabData.selling}€</p>
+			</div>
+
+			<div className="resultFormItem">
+				<p className="resultFormItemLeft">Type</p>
+				<p className="resultFormItemRight">{props.tabData.type}</p>
+			</div>
+
+			<div className="resultFormItem">
+				<p className="resultFormItemLeft">Risk</p>
+				<p className="resultFormItemRight">{props.tabData.risk}</p>
+			</div>
+    	</div>
+		<div className="coastDivHead">
+			<h1>Cost Details</h1>
+		</div>
+		
+		{getCostItemList}
+		
+    </div>
+	</>
+      </List>
+    </Box>
+  );
+
   return (
+	<>
 	<SwipeToDelete 
 	key={props.id} 
 	onDelete={DeleteBtn}
@@ -72,7 +220,17 @@ function DeleteBtn(){
 		<div className="outer-div">
 			<div className="item-div">
 				
-				<div className="item-detail-div">
+				<div className="item-detail-div" onClick={toggleDrawer("bottom", true,
+				props.risk,
+				props.created_at,
+				props.amount_purchase,
+				props.margin,
+				props.type,
+				props.calculation_type,
+				props.cost,
+				props.keyNumber,
+				props.detail
+				)}>
 					<p className="item-detail-keyNumber">{props.keyNumber}</p>
 					<p className="item-detail-detail">{props.detail}</p>
 					<div className="item-detail-list">
@@ -101,5 +259,21 @@ function DeleteBtn(){
 			<button className="deleteBtn hide">Delete</button>
 		</div>
 	</SwipeToDelete>
+
+	<div>
+	{['left', 'right', 'top', 'bottom'].map((anchor) => (
+	<React.Fragment key={anchor}>
+		{/* <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button> */}
+		<Drawer
+		anchor={anchor}
+		open={state[anchor]}
+		onClose={toggleDrawer(anchor, false)}
+		>
+		{list(anchor)}
+		</Drawer>
+	</React.Fragment>
+	))}
+	</div>
+	</>
   );
 }

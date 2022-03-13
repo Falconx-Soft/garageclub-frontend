@@ -32,19 +32,17 @@ export default function GetItems(props) {
     const [temp, setTemp] = React.useState(validation);
 
     React.useEffect(function() {
-        console.log("Effect ran2")
         fetch("api/validations/")
             .then(res => res.json())
             .then(data => setTemp(data))
     }, [])
 
     React.useEffect(function() {
-        console.log("Effect ran")
         fetch("api/validations/")
             .then(res => res.json())
             .then(data => setvalidation(data))
     }, [])
-
+    
     if(props.sorting === "margin"){
         temp.sort(function(a, b) {
             return b.margin - a.margin;
@@ -60,7 +58,7 @@ export default function GetItems(props) {
     }
     const itemObj = temp.map(i => {
         if(i){
-            return <Item keyNumber={i.reference} detail={i.model} key={i.id} amount_purchase={i.amount_purchase} amount_sale={i.amount_sale} id={i.id} risk={i.risk} margin={i.margin} setvalidation={setvalidation} validation={validation} setTemp={setTemp} type={i.type} marginTemp={props.marginTemp} created_at={i.created_at} />
+            return <Item keyNumber={i.reference} detail={i.model} key={i.id} amount_purchase={i.amount_purchase} amount_sale={i.amount_sale} id={i.id} risk={i.risk} margin={i.margin} setvalidation={setvalidation} validation={validation} setTemp={setTemp} type={i.type} marginTemp={props.marginTemp} created_at={i.created_at} calculation_type={i.calculation_type} cost = {i.costs} tabData={props.tabData} settabData={props.settabData} costList={props.costList} setCostList={props.setCostList} />
         }
     })
     function handleChange(event) {

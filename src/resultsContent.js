@@ -66,7 +66,7 @@ export default function ResultsContent(props) {
               }
             ],
             "uuid": uuidv4(),
-            "calculation_type": 0,
+            "calculation_type": props.valoracion == "REBU"? 0 : 1,
             "reference": props.formData.reference,
             "make": 0,
             "model": props.formData.makeNmade,
@@ -86,7 +86,7 @@ export default function ResultsContent(props) {
       .catch((error) => {
         console.error('Error:', error);
       });
-      document.getElementById("homeRedirect").click();
+      // document.getElementById("homeRedirect").click();
     }
 	};
 

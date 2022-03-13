@@ -4,6 +4,7 @@ import Nav2 from './nav2';
 import Header from './header';
 import GetItems from './getItems';
 import AddForm from './addForm';
+import EditForm from './editForm';
 import AddComponents from './addComponents';
 // import Data from './componentsData';
 import ResultNav from './resultNav';
@@ -20,6 +21,7 @@ export default function Setup() {
 	const [sorting, setSorting] = React.useState("price");
 
 	const [marginTemp, setMarginTemp] = React.useState([]);
+
 	React.useEffect(function() {
         fetch("api/profitability/")
             .then(res => res.json())
@@ -59,6 +61,19 @@ export default function Setup() {
 	const [formData, setFormData] = React.useState({reference:"", makeNmade: "", purchase: "", selling: "", type:0, risk:""});
 	const [valoracion, setValoracion] = React.useState("REBU");
 	const [totalAmount, setTotalAmount] = React.useState(0);
+
+	const [tabData, settabData] = React.useState({
+		margin: 0,
+		valoracion: "none",
+		purchase: 0,
+		selling: 0,
+		type: "none",
+		risk: "none",
+		reference: "none",
+		makeNmade: "none",
+	  });
+	
+	const [costList, setCostList] = React.useState([]);
 	return (
 		<Router>
 			<Switch>
@@ -66,7 +81,11 @@ export default function Setup() {
 					<>
 					<Route exact path="/" >
 						<Nav url="/" />
-						<GetItems sorting={sorting} marginTemp={marginTemp}  setSorting={setSorting}/>
+						<GetItems sorting={sorting} marginTemp={marginTemp}  setSorting={setSorting} tabData={tabData} settabData={settabData} costList={costList} setCostList={setCostList} />
+					</Route>
+
+					<Route exact path="/edit" >
+						<EditForm tabData={tabData} settabData={settabData} costList={costList} setCostList={setCostList} />
 					</Route>
 
 					<Route exact path="/result" >
