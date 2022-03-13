@@ -89,25 +89,9 @@ export default function GetItems(props) {
                 <TextField id="standard-basic" label="Search" variant="standard" onChange={handleChange} />
             </div> */}
             <div className='sliderDiv'>
-                <Carousel responsive={responsive}
-                    swipeable={true}
-                    draggable={true}
-                    showDots={false}
-                    ssr={true} // means to render carousel on server-side.
-                    infinite={false}
-                    autoPlay={false}
-                    keyBoardControl={false}
-                    customTransition="none"
-                    transitionDuration={0}
-                    containerClass="carousel-container"
-                    removeArrowOnDeviceType={["tablet", "mobile"]}
-                    dotListClass="custom-dot-list-style"
-                    itemClass="carousel-item-padding-40-px"
-                >
                 <div className='filterOption' onClick={()=> selectSort("date")}>By Date</div>
                 <div className='filterOption' onClick={()=> selectSort("margin")}>By Margin</div>
                 <div className='filterOption' onClick={()=> selectSort("price")}>By Selling Price</div>
-                </Carousel>
             </div>
 
             {itemObj}
