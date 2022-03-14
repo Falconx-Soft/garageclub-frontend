@@ -49,12 +49,10 @@ export default function Setup() {
             .then(res => res.json())
             .then(data =>{
 				let temp = [];
-				console.log("data",data);
 				data.map(i => {
 					let temp2 = {"id":i.id, "quantity":0, "name":i.description, "prince":i.amount,"priority":i.priority};
 					temp.push(temp2);
 				})
-				console.log(temp);
 				setComponents(temp);
 			})
     }, [])
@@ -74,14 +72,17 @@ export default function Setup() {
 	  });
 	
 	const [costList, setCostList] = React.useState([]);
+
+	const [validation, setvalidation] = React.useState([]);
+    const [temp, setTemp] = React.useState(validation);
 	return (
 		<Router>
 			<Switch>
 				{Object.keys(marginTemp).length>0?
 					<>
 					<Route exact path="/" >
-						<Nav url="/" />
-						<GetItems sorting={sorting} marginTemp={marginTemp}  setSorting={setSorting} tabData={tabData} settabData={settabData} costList={costList} setCostList={setCostList} />
+						<Nav url="/" validation={validation} setvalidation={setvalidation} temp={temp} setTemp={setTemp}/>
+						<GetItems sorting={sorting} marginTemp={marginTemp}  setSorting={setSorting} tabData={tabData} settabData={settabData} costList={costList} setCostList={setCostList} validation={validation} setvalidation={setvalidation} temp={temp} setTemp={setTemp} />
 					</Route>
 
 					<Route exact path="/edit" >

@@ -111,7 +111,6 @@ const [state, setState] = React.useState({
 
   let count = 0;
   const getCostItemList=props.costList.map(i => {
-	  console.log(count);
 	  count += 1;
 		return(
 			<>

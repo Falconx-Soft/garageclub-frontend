@@ -61,7 +61,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export default function Nav() {
+export default function Nav(props) {
 	const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -72,6 +72,38 @@ export default function Nav() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const searchIcion = document.getElementById("searchIconsh");
+  if(searchIcion != null){
+    searchIcion.addEventListener("click",function(){
+      if (document.getElementById("search-div").classList.contains("showDiv")){
+        document.getElementById("search-div").classList.remove("showDiv");
+        document.getElementById("search-div").classList.add("hideDiv");
+      }else{
+        document.getElementById("search-div").classList.add("showDiv");
+        document.getElementById("search-div").classList.remove("hideDiv");
+      }
+    })
+  }
+
+  function handleChange(event) {
+    const m = event.target.value;
+    let hold = []
+    if(m===""){
+        props.setTemp(props.validation);
+    }else{
+      props.validation.map((c) => {
+            var re = new RegExp(m, 'i');
+            if(c && c.reference.match(re)){
+                hold.push(c);
+            }else if(c && c.model.match(re)){
+                hold.push(c);
+            }
+        })
+        props.setTemp(hold);
+    }
+  }
+
   return (
 	<>
     <div className="nav-div">
@@ -80,7 +112,7 @@ export default function Nav() {
 	  		<p className="title">Todas Las Valoranions</p>
 		</div>
 		<div className="nav-div-right-btn">
-			<i className="fas fa-search"></i>
+			<i className="fas fa-search" id="searchIconsh"></i>
 		</div>
     </div>
 	<Drawer
@@ -114,6 +146,9 @@ export default function Nav() {
 		</List>
 		
 	</Drawer>
+  <div className="search-div hideDiv" id="search-div">
+    <input className="search-input" onChange={handleChange} placeholder="Search..."></input>
+  </div>
 	</>
   );
 }

@@ -28,56 +28,38 @@ export default function GetItems(props) {
         }
       };
 
-    const [validation, setvalidation] = React.useState([]);
-    const [temp, setTemp] = React.useState(validation);
+    
 
     React.useEffect(function() {
         fetch("api/validations/")
             .then(res => res.json())
-            .then(data => setTemp(data))
+            .then(data => props.setTemp(data))
     }, [])
 
     React.useEffect(function() {
         fetch("api/validations/")
             .then(res => res.json())
-            .then(data => setvalidation(data))
+            .then(data => props.setvalidation(data))
     }, [])
     
     if(props.sorting === "margin"){
-        temp.sort(function(a, b) {
+        props.temp.sort(function(a, b) {
             return b.margin - a.margin;
           });
     }else if(props.sorting === "price"){
-        temp.sort(function(a, b) {
+        props.temp.sort(function(a, b) {
             return b.amount_purchase - a.amount_purchase;
           });
     }else{
-        temp.sort(function(a, b) {
+        props.temp.sort(function(a, b) {
             return new Date(b.created_at) - new Date(a.created_at);
           });
     }
-    const itemObj = temp.map(i => {
+    const itemObj = props.temp.map(i => {
         if(i){
-            return <Item keyNumber={i.reference} detail={i.model} key={i.id} amount_purchase={i.amount_purchase} amount_sale={i.amount_sale} id={i.id} risk={i.risk} margin={i.margin} setvalidation={setvalidation} validation={validation} setTemp={setTemp} type={i.type} marginTemp={props.marginTemp} created_at={i.created_at} calculation_type={i.calculation_type} cost = {i.costs} tabData={props.tabData} settabData={props.settabData} costList={props.costList} setCostList={props.setCostList} />
+            return <Item keyNumber={i.reference} detail={i.model} key={i.id} amount_purchase={i.amount_purchase} amount_sale={i.amount_sale} id={i.id} risk={i.risk} margin={i.margin} setvalidation={props.setvalidation} validation={props.validation} setTemp={props.setTemp} type={i.type} marginTemp={props.marginTemp} created_at={i.created_at} calculation_type={i.calculation_type} cost = {i.costs} tabData={props.tabData} settabData={props.settabData} costList={props.costList} setCostList={props.setCostList} />
         }
     })
-    function handleChange(event) {
-        const m = event.target.value;
-        let hold = []
-        if(m===""){
-            setTemp(validation);
-        }else{
-            validation.map((c) => {
-                var re = new RegExp(m, 'i');
-                if(c && c.reference.match(re)){
-                    hold.push(c);
-                }else if(c && c.model.match(re)){
-                    hold.push(c);
-                }
-            })
-            setTemp(hold);
-        }
-    }
 
     function selectSort(name){
         props.setSorting(name)

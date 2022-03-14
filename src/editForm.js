@@ -1,4 +1,4 @@
-import './addForm.css';
+import './editForm.css';
 import React from "react";
 import CoastItems from "./coastItems";
 import { Link } from 'react-router-dom';
@@ -23,6 +23,8 @@ export default function EditForm(props) {
     const location = useLocation()
     const {fromAddComponents} = location.state
 
+    console.log(props.costList,"**************");
+
   return (
     <div className="addform">
 		<form className='inputForm'>
@@ -37,8 +39,8 @@ export default function EditForm(props) {
         label="valoracion"
         name = "valoracion">
           <option value="">Select Valoracion</option>
-          <option value="0">REBU</option>
-          <option value="1">IVA</option>
+          <option value="REBU">REBU</option>
+          <option value="IVA">IVA</option>
       </select>
     </div>
 
@@ -100,7 +102,7 @@ export default function EditForm(props) {
 
     <Link to="/result" className='confirmLink'><input className='confirmBtn' type="button" value="Confirm"></input></Link>
 
-    <a href="/" className='confirmLink'><input className='cancelBtn' type="button" value="Cancel"></input></a>
+    <a href="/" className='cancelLink'><input className='cancelBtn' type="button" value="Cancel"></input></a>
 		</form>
     </div>
   );

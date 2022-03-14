@@ -83,3 +83,30 @@ i{
 .fa-bars{
 	cursor: pointer;
 }
+
+.search-div{
+	display: flex;
+	justify-content: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #353636;
+}
+
+.search-input{
+	width: 300px;
+	height: 20px;
+	border-radius: 20px;
+	padding-left: 10px;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.showDiv{
+	display: flex;
+}
+
+.hideDiv{
+	display: none;
+}

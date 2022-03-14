@@ -1,0 +1,322 @@
+.addform{
+	padding: 20px;
+}
+
+.inputFieldDiv{
+	display: flex;
+	border-bottom: solid 1px rgb(0,0,0,0.2);
+	padding:10px;
+	position: relative;
+}
+
+.inputFieldLable{
+	width: 30%;
+}
+
+.inputFieldLable>p{
+	margin:0px;
+}
+
+.inputFieldInput{
+	width: 70%;
+}
+
+.inputFieldInput>input{
+	width: 90%;
+	border: none;
+	font-size: 14px;
+}
+
+.inputFieldInput>input::-webkit-outer-spin-button,
+.inputFieldInput>input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.inputFieldInput>input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.inputFieldInput>input:focus{
+    outline: none;
+} 
+
+.inputIcion{
+	position: absolute;
+}
+
+.addCoastBtn{
+	background-color:aquamarine;
+	cursor: pointer;
+	border:none;
+	width: 100%;
+	padding:15px;
+	border-radius: 20px;
+}
+
+.coastDiv{
+	width: 100%;
+}
+
+.coastDivHead{
+	display: flex;
+	align-items:center;
+	justify-content: space-between;
+	width: 100%;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+.coastDivHead > h1{
+	font-size:large;
+	text-align: center;
+}
+
+.coastEditLink{
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 19px;
+	text-transform: uppercase;
+	color: #1084F1;
+	text-decoration: none;
+}
+
+.cosatItem{
+	display: flex;
+	padding-bottom: 10px;
+	border-bottom: solid 1px rgb(0,0,0,0.2);
+	margin-top: 10px;
+}
+
+.cosatItemLeft>p{
+	margin-left: 20px;
+	
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+.cosatItemLeft{
+	width: 50%;
+	display: flex;
+	align-items: center;
+}
+
+.cosatItemLeft > img{
+	width: 32px;
+	height: 32px;
+}
+
+.cosatItemRight{
+	width: 50%;
+	
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+.cosatItemRight>p{
+	font-size:small;
+	text-align: right;
+	margin-right: 10px;
+}
+
+.cosatItemTotal{
+	display: flex;
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.cosatItemTotalLeft{
+	width: 50%;
+	
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 24px;
+}
+
+.cosatItemTotalRight{
+	width: 50%;
+	
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 24px;
+}
+
+.cosatItemTotalRight>p{
+	text-align: right;
+	margin-right: 10px;
+}
+
+
+.MuiTextField-root{
+	width: 100% !important;
+}
+
+.MuiSelect-icon{
+	display: none !important;
+}
+
+.matrialDropDownForm{
+	width: 100%;
+}
+
+.inputWithIcion{
+	position: relative;
+}
+
+.inputIcion{
+	position: absolute;
+	right: 20px;
+    top: 40%;
+	cursor: pointer;
+}
+
+.inputTcionChecked{
+	color: green;
+}
+
+.referanceInputDiv{
+	width: 100%;
+	border: none;
+	outline:0px;
+	background-color: white;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 19px;
+}
+
+/************************************* Desgine update */
+
+.inputForm{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.inputDiv{
+	width: 100%;
+	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+	border: solid 1px rgba(0, 0, 0, 0.12);
+	
+}
+
+.inputDivInput{
+	width: 100%;
+	outline: none;
+	border: none;
+	
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 19px;
+}
+
+.inputDivInputPurchase{
+	width: 90%;
+	outline: none;
+	border: none;
+	
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 19px;
+}
+
+.euroSymbol{
+	margin: 0px;
+	width: 10%;
+	text-align: right;
+	margin: 5px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.coastLink{
+	width: 100%;
+	text-align: left !important;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 16px;
+	letter-spacing: 1.25px;
+	text-transform: uppercase;
+	color: #1084F1;
+	text-decoration: none;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+
+.confirmLink{
+	margin-top: 20px;
+	width: 100%;
+}
+
+.cancelLink{
+	width: 100%;
+}
+
+.confirmBtn{
+	width: 100%;
+	height: 48px;
+	background: #353636;
+	border: 1px solid rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	border-radius: 4px;
+	color: white;
+	cursor: pointer;
+	
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 19px;
+	/* identical to box height */
+
+	letter-spacing: 1.25px;
+	text-transform: uppercase;
+}
+
+.cancelBtn{
+	width: 100%;
+	height: 48px;
+	background: white;
+	border: 1px solid #353636;
+	box-sizing: border-box;
+	border-radius: 4px;
+	color: black;
+	margin-top: 10px;
+	cursor: pointer;
+	
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 19px;
+	/* identical to box height */
+
+	letter-spacing: 1.25px;
+	text-transform: uppercase;
+}
+
+
