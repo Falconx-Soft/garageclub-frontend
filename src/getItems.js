@@ -57,7 +57,7 @@ export default function GetItems(props) {
     }
     const itemObj = props.temp.map(i => {
         if(i){
-            return <Item keyNumber={i.reference} detail={i.model} key={i.id} amount_purchase={i.amount_purchase} amount_sale={i.amount_sale} id={i.id} risk={i.risk} margin={i.margin} setvalidation={props.setvalidation} validation={props.validation} setTemp={props.setTemp} type={i.type} marginTemp={props.marginTemp} created_at={i.created_at} calculation_type={i.calculation_type} cost = {i.costs} tabData={props.tabData} settabData={props.settabData} costList={props.costList} setCostList={props.setCostList} />
+            return <Item keyNumber={i.reference} detail={i.model} key={i.id} amount_purchase={i.amount_purchase} amount_sale={i.amount_sale} id={i.id} risk={i.risk} margin={i.margin} setvalidation={props.setvalidation} validation={props.validation} setTemp={props.setTemp} type={i.type} marginTemp={props.marginTemp} created_at={i.created_at} calculation_type={i.calculation_type} cost = {i.costs} tabData={props.tabData} settabData={props.settabData} costList={props.costList} setCostList={props.setCostList} costDetails={props.costDetails} setcostDetails={props.setcostDetails} />
         }
     })
 

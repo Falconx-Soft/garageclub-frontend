@@ -41,6 +41,11 @@ export default function ResultsContent(props) {
 			}
 		}
 	}
+  let costList = []
+  for(let i=0; i<props.components.length; i++){
+    console.log(props.components[i],"***************")
+    costList.push({"uuid": uuidv4(),"quantity": props.components[i].quantity,"amount": props.components[i].prince,"cost": props.components[i].id}) 
+  }
 
   function saveData(){
     if(props.formData.reference == ""){
@@ -57,14 +62,7 @@ export default function ResultsContent(props) {
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify(
           {
-            "costs": [
-              {
-                "uuid": uuidv4(),
-                "quantity": 2147483647,
-                "amount": 0,
-                "cost": 4
-              }
-            ],
+            "costs": costList,
             "uuid": uuidv4(),
             "calculation_type": props.valoracion == "REBU"? 0 : 1,
             "reference": props.formData.reference,

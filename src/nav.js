@@ -13,6 +13,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import SideBar from './sideBar.png';
+import SideBarLogo from './sideBarLogo.png';
 
 const drawerWidth = 240;
 
@@ -132,7 +133,8 @@ export default function Nav(props) {
 		<DrawerHeader className='sidebar'>
 
 		<IconButton onClick={handleDrawerClose}>
-			<p className="sidebarHeading">GARAGE Club</p>
+			{/* <p className="sidebarHeading">GARAGE Club</p> */}
+      <img src={SideBarLogo}></img>
 			{theme.direction === 'ltr' ? <CloseIcon /> : <ChevronRightIcon />}
 		</IconButton>
 		</DrawerHeader>

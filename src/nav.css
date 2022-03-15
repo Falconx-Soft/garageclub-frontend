@@ -39,7 +39,7 @@ i{
 	color:white;
 	text-align: left;
 	width: 100%;
-	margin-left: 30px
+	margin-left: 18px
 }
 
 .sidebarList{
@@ -109,4 +109,25 @@ textarea:focus, input:focus{
 
 .hideDiv{
 	display: none;
+}
+
+@media (min-width: 600px){
+
+	.css-3v9zut {
+		min-height: 110px !important;
+	}
+	
+}
+
+.css-3v9zut {
+	min-height: 110px !important;
+}
+
+.css-9emuhu-MuiPaper-root-MuiDrawer-paper{
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+}
+
+#searchIconsh{
+	cursor: pointer;
 }

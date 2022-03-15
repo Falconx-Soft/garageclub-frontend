@@ -94,8 +94,13 @@ const [state, setState] = React.useState({
 				}
 			})
 		}
-	props.setCostList([])
 	if(coast != null){
+		let coastTemp = []
+		coast.map(i => {
+			coastTemp.push({"quantity":i.quantity,"costID":i.cost})
+		})
+		props.setcostDetails(coastTemp);
+		props.setCostList([])
 		for(let i=0; i<coast.length;i++){
 			fetch("api/costs/"+coast[i].cost+"/")
 				.then(res => res.json())
@@ -120,7 +125,7 @@ const [state, setState] = React.useState({
 						<p>{i.description}</p>
 					</div>
 					<div className="cosatItemRight">
-						<p><b>{i.amount}€</b></p>
+						<p><b>{i.amount * props.costDetails[count-1].quantity}€</b></p>
 					</div>
 				</div>
 			</>
@@ -137,7 +142,7 @@ const [state, setState] = React.useState({
     >
     <List>
 	<>
-	<div className="resultHeader-div">
+	<div className="resultHeader-div div-radius">
       <div className="resultHead">
         <p className="resultHeadLabel">Valoraciones Details</p>
         <Link className="resultHeadLink" to={{

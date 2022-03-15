@@ -6,6 +6,7 @@ import GetItems from './getItems';
 import AddForm from './addForm';
 import EditForm from './editForm';
 import AddComponents from './addComponents';
+import EditFormCost from './editFormCost'
 // import Data from './componentsData';
 import ResultNav from './resultNav';
 import ResultsContent from './resultsContent';
@@ -72,7 +73,7 @@ export default function Setup() {
 	  });
 	
 	const [costList, setCostList] = React.useState([]);
-
+	const [costDetails, setcostDetails] = React.useState([]);
 	const [validation, setvalidation] = React.useState([]);
     const [temp, setTemp] = React.useState(validation);
 	return (
@@ -82,11 +83,15 @@ export default function Setup() {
 					<>
 					<Route exact path="/" >
 						<Nav url="/" validation={validation} setvalidation={setvalidation} temp={temp} setTemp={setTemp}/>
-						<GetItems sorting={sorting} marginTemp={marginTemp}  setSorting={setSorting} tabData={tabData} settabData={settabData} costList={costList} setCostList={setCostList} validation={validation} setvalidation={setvalidation} temp={temp} setTemp={setTemp} />
+						<GetItems sorting={sorting} marginTemp={marginTemp}  setSorting={setSorting} tabData={tabData} settabData={settabData} costList={costList} setCostList={setCostList} validation={validation} setvalidation={setvalidation} temp={temp} setTemp={setTemp} costDetails={costDetails} setcostDetails={setcostDetails} />
 					</Route>
 
 					<Route exact path="/edit" >
-						<EditForm tabData={tabData} settabData={settabData} costList={costList} setCostList={setCostList} />
+						<EditForm tabData={tabData} settabData={settabData} costList={costList} setCostList={setCostList} costDetails={costDetails} setcostDetails={setcostDetails} />
+					</Route>
+
+					<Route exact path="/editFormCost" >
+						<EditFormCost costList={costList} setCostList={setCostList} costDetails={costDetails} setcostDetails={setcostDetails} components={components}/>
 					</Route>
 
 					<Route exact path="/result" >

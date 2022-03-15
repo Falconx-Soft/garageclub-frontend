@@ -3,6 +3,8 @@ import React from "react";
 import CoastItems from "./coastItems";
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import logo1 from './cost1.png';
+
 export default function EditForm(props) {
 
     function handleChange(event) {
@@ -14,17 +16,35 @@ export default function EditForm(props) {
         })
     }
 
-    function handleValoracionChange(event){
-      props.setValoracion(prevData => {
-        return (event.target.value)
-      });
-    }
+    // function handleValoracionChange(event){
+    //   props.setValoracion(prevData => {
+    //     return (event.target.value)
+    //   });
+    // }
     
     const location = useLocation()
-    const {fromAddComponents} = location.state
 
-    console.log(props.costList,"**************");
+    console.log("Hi my fucken friend")
+    console.log(props.costList)
 
+    let count = 0;
+    const getCostItemList=props.costList.map(i => {
+      count += 1;
+      return(
+        <>
+          <div className="cosatItem2">
+            <div className="cosatItemLeft">
+              <img src={logo1} alt="Logo" />
+              <p>{i.description}</p>
+            </div>
+            <div className="cosatItemRight">
+              <p><b>{i.amount * props.costDetails[count-1].quantity}€</b></p>
+            </div>
+          </div>
+        </>
+      )
+    });
+  
   return (
     <div className="addform">
 		<form className='inputForm'>
@@ -96,10 +116,13 @@ export default function EditForm(props) {
       </select>
     </div>
     
-    {/* {fromAddComponents && <CoastItems components={props.components} setTotalAmount = {props.setTotalAmount} url="addForm" /> }
-    
-    { fromAddComponents ? null :<Link to="/addComponents" className='coastLink'><p className='coastLinkLable'>+ ADD COAST</p></Link>} */}
-
+    <div className='costDiv'>
+      <div className='costDiv-head'>
+        <h1>Cost Details</h1>
+        <Link to="/editFormCost"><p>Edit</p></Link>
+      </div>
+      {getCostItemList}
+    </div>
     <Link to="/result" className='confirmLink'><input className='confirmBtn' type="button" value="Confirm"></input></Link>
 
     <a href="/" className='cancelLink'><input className='cancelBtn' type="button" value="Cancel"></input></a>

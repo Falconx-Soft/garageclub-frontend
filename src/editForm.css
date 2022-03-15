@@ -319,4 +319,29 @@ input[type=number] {
 	text-transform: uppercase;
 }
 
+.costDiv{
+	margin-top: 20px;
+	width: 100%;
+}
+
+.costDiv-head{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.costDiv-head>h1{
+	font-size: 20px;
+}
+
+.costDiv-head>p{
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 19px;
+	text-transform: uppercase;
+	color: #1084F1;
+	text-decoration: none;
+	cursor: pointer;
+}
 

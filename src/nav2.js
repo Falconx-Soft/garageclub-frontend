@@ -10,8 +10,8 @@ export default function Nav2(props) {
 				state:{
 					fromAddComponents: false
 				}
-			}}><i className="fa fa-caret-left fa-2x"></i></Link>:
-			<Link to="/"><i className="fa fa-caret-left fa-2x"></i></Link>
+			}}><i className="fa fa-arrow-left"></i></Link>:
+			<Link to="/"><i className="fa fa-arrow-left"></i></Link>
 		}
 		{props.url === "/addComponents" ? <p className='navLabel'>Add Cost</p>:
 		<p className='navLabel'>Create New Operation</p>}
