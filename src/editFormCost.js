@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default function AddComponents(props) {
 
 	function handleAddClick(id){
-		props.setComponents(preData=>{
+		props.seteditComponents(preData=>{
 			return preData.map((c) => {
                 return c.id === id ? {...c, quantity: c.quantity+1} : c
             })
@@ -13,33 +13,21 @@ export default function AddComponents(props) {
 	}
 
 	function handleSubtractClick(id){
-		props.setComponents(preData=>{
+		props.seteditComponents(preData=>{
 			return preData.map((c) => {
                 return c.id === id && c.quantity !== 0 ? {...c, quantity: c.quantity-1} : c
             })
 		})
 	}
 
-	props.components.sort(function(a, b) {
-		return  a.priority - b.priority;
-	  });
-
-	const itemObj = props.components.map(i => {
+	const itemObj = props.editComponents.map(i => {
 		let p = 0;
-		console.log(i.id,"out loop")
-		for(let i=0; i<props.costDetails.length; i++){
-			console.log(props.costDetails[i].costID,"in loop")
-			console.log(typeof(props.costDetails[i].costID))
-			console.log(typeof(Number(i.id)))
-			let num1 = 0;
-			let num2 = 0;
-			num1 = props.costDetails[i].costID;
-			num2 = i.id
-			if(num1 === num2){
-				p = props.costDetails[i].quantity;
-				console.log(p,"its p")
-			}
-		}
+		for(let x=0; x<props.costDetails.length; x++){
+			if(props.costDetails[x].costID == i.id){
+				console.log(props.costDetails[x],"*******");
+				p = props.costDetails[x].quantity;
+			};
+		};
         return (
 			<div className="componentItem" key={i.id}>
 				<div className="componentLeftItem">
@@ -51,7 +39,7 @@ export default function AddComponents(props) {
 				</div>
 				<div className="componentRightItem">
 					<i className="fa fa-minus subtractQuantity" onClick={() => handleSubtractClick(i.id)} aria-hidden="true"></i>
-					<p className='noMargin'>{p}</p>
+					<p className='noMargin'>{i.quantity}</p>
 					<i className="fa fa-plus addQuantity" onClick={() => handleAddClick(i.id)} aria-hidden="true"></i>
 				</div>
 			</div>
@@ -63,7 +51,7 @@ export default function AddComponents(props) {
 		<div className="componentsForm">
 			{itemObj}
 			<Link to={{
-				pathname: "/add",
+				pathname: "/edit",
 				state:{
 					fromAddComponents: true
 				}

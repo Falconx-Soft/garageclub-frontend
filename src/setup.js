@@ -44,6 +44,7 @@ export default function Setup() {
 			})
     }, [])
 	const [components, setComponents] = React.useState([]);
+	const [editComponents, seteditComponents] = React.useState([]);
 	React.useEffect(function() {
 		console.log("Featch components");
         fetch("api/costs/")
@@ -55,6 +56,7 @@ export default function Setup() {
 					temp.push(temp2);
 				})
 				setComponents(temp);
+				seteditComponents(temp);
 			})
     }, [])
 	const [formData, setFormData] = React.useState({reference:"", makeNmade: "", purchase: "", selling: "", type:0, risk:""});
@@ -76,6 +78,7 @@ export default function Setup() {
 	const [costDetails, setcostDetails] = React.useState([]);
 	const [validation, setvalidation] = React.useState([]);
     const [temp, setTemp] = React.useState(validation);
+
 	return (
 		<Router>
 			<Switch>
@@ -87,11 +90,11 @@ export default function Setup() {
 					</Route>
 
 					<Route exact path="/edit" >
-						<EditForm tabData={tabData} settabData={settabData} costList={costList} setCostList={setCostList} costDetails={costDetails} setcostDetails={setcostDetails} />
+						<EditForm tabData={tabData} settabData={settabData} costList={costList} setCostList={setCostList} costDetails={costDetails} setcostDetails={setcostDetails} editComponents={editComponents} seteditComponents={seteditComponents} />
 					</Route>
 
 					<Route exact path="/editFormCost" >
-						<EditFormCost costList={costList} setCostList={setCostList} costDetails={costDetails} setcostDetails={setcostDetails} components={components}/>
+						<EditFormCost costList={costList} setCostList={setCostList} costDetails={costDetails} setcostDetails={setcostDetails} editComponents={editComponents} seteditComponents={seteditComponents}/>
 					</Route>
 
 					<Route exact path="/result" >

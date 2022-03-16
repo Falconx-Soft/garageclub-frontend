@@ -4,6 +4,7 @@ import CoastItems from "./coastItems";
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import logo1 from './cost1.png';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function EditForm(props) {
 
@@ -12,39 +13,77 @@ export default function EditForm(props) {
             return {
                 ...prevFormData,
                 [event.target.name]: event.target.value
-            }
-        })
-    }
+            };
+        });
+    };
 
-    // function handleValoracionChange(event){
-    //   props.setValoracion(prevData => {
-    //     return (event.target.value)
-    //   });
-    // }
-    
-    const location = useLocation()
+    React.useEffect(function() {
+      for(let i=0; i<props.costDetails.length; i++){
+        props.seteditComponents(prevData=>{
+          return prevData.map((c) => {
+            return c.id === props.costDetails[i].costID && c.quantity === 0 ? {...c, quantity: props.costDetails[i].quantity} : c
+          })
+        });
+      };
+    }, [])
 
-    console.log("Hi my fucken friend")
-    console.log(props.costList)
-
-    let count = 0;
-    const getCostItemList=props.costList.map(i => {
-      count += 1;
-      return(
-        <>
-          <div className="cosatItem2">
-            <div className="cosatItemLeft">
-              <img src={logo1} alt="Logo" />
-              <p>{i.description}</p>
+    const getCostItemList=props.editComponents.map(i => {
+      if(i.quantity != 0){
+        return(
+          <>
+            <div className="cosatItem2">
+              <div className="cosatItemLeft">
+                <img src={logo1} alt="Logo" />
+                <p>{i.name}</p>
+              </div>
+              <div className="cosatItemRight">
+                <p><b>{i.quantity * i.prince}€</b></p>
+              </div>
             </div>
-            <div className="cosatItemRight">
-              <p><b>{i.amount * props.costDetails[count-1].quantity}€</b></p>
-            </div>
-          </div>
-        </>
-      )
+          </>
+        )
+      }
     });
-  
+
+    let updatecostList = []
+    for(let i=0; i<props.editComponents.length; i++){
+      if(props.editComponents[i].quantity != 0){
+
+        updatecostList.push({"uuid": uuidv4(),"quantity": props.editComponents[i].quantity,"amount": props.editComponents[i].prince,"cost": props.editComponents[i].id}) 
+
+      };
+    };
+
+    function updateData(){
+      fetch('api/validations/'+props.tabData.id, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(
+          {
+            "costs": updatecostList,
+            "uuid": uuidv4(),
+            "calculation_type":props.tabData.valoracion == "REBU"? 0 : 1,
+            "reference": props.tabData.reference,
+            "make": 0,
+            "model": props.tabData.makeNmade,
+            "amount_purchase": props.tabData.purchase,
+            "purchase_vat": true,
+            "amount_sale": props.tabData.selling,
+            "sale_vat": true,
+            "margin": props.tabData.margin,
+            "type": props.tabData.type === "A"? 0 : props.tabData.type === "B"? 1:2,
+            "risk": props.tabData.risk === "" ? 1 : props.tabData.risk
+          } 
+        ) 
+      }).then((response) => response.json())
+        .then((messages) => {console.log("messages");
+      });
+    };
+
+    
   return (
     <div className="addform">
 		<form className='inputForm'>
@@ -123,7 +162,7 @@ export default function EditForm(props) {
       </div>
       {getCostItemList}
     </div>
-    <Link to="/result" className='confirmLink'><input className='confirmBtn' type="button" value="Confirm"></input></Link>
+    <input className='confirmBtn' onClick={updateData} type="button" value="Confirm"></input>
 
     <a href="/" className='cancelLink'><input className='cancelBtn' type="button" value="Cancel"></input></a>
 		</form>

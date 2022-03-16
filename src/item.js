@@ -77,6 +77,7 @@ const [state, setState] = React.useState({
 	coast,
 	reference,
 	makeNmade,
+	id,
 	) => (event) => {
 		if(created_at != undefined){
 			console.log(risk,created_at,purchase,margin,type,calculation_type,coast)
@@ -90,7 +91,8 @@ const [state, setState] = React.useState({
 					type:type ==0 ? "A": type == 1 ? "B":"C",
 					risk:risk,
 					reference:reference,
-					makeNmade:makeNmade
+					makeNmade:makeNmade,
+					id:id
 				}
 			})
 		}
@@ -233,7 +235,8 @@ const [state, setState] = React.useState({
 				props.calculation_type,
 				props.cost,
 				props.keyNumber,
-				props.detail
+				props.detail,
+				props.id
 				)}>
 					<p className="item-detail-keyNumber">{props.keyNumber}</p>
 					<p className="item-detail-detail">{props.detail}</p>
