@@ -74,9 +74,8 @@ export default function Nav(props) {
     setOpen(false);
   };
 
-  const searchIcion = document.getElementById("searchIconsh");
-  if(searchIcion != null){
-    searchIcion.addEventListener("click",function(){
+  function toggelDiv(){
+    console.log("clicked");
       if (document.getElementById("search-div").classList.contains("showDiv")){
         document.getElementById("search-div").classList.remove("showDiv");
         document.getElementById("search-div").classList.add("hideDiv");
@@ -84,7 +83,6 @@ export default function Nav(props) {
         document.getElementById("search-div").classList.add("showDiv");
         document.getElementById("search-div").classList.remove("hideDiv");
       }
-    })
   }
 
   function handleChange(event) {
@@ -113,7 +111,7 @@ export default function Nav(props) {
 	  		<p className="title">Todas Las Valoranions</p>
 		</div>
 		<div className="nav-div-right-btn">
-			<i className="fas fa-search" id="searchIconsh"></i>
+			<i className="fas fa-search" onClick={toggelDiv}></i>
 		</div>
     </div>
 	<Drawer
