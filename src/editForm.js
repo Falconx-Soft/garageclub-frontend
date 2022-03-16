@@ -55,7 +55,7 @@ export default function EditForm(props) {
     };
 
     function updateData(){
-      fetch('api/validations/'+props.tabData.id, {
+      fetch('api/validations/'+props.tabData.id+"/", {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -158,7 +158,7 @@ export default function EditForm(props) {
     <div className='costDiv'>
       <div className='costDiv-head'>
         <h1>Cost Details</h1>
-        <Link to="/editFormCost"><p>Edit</p></Link>
+        <Link to="/editFormCost" className="editCostLink"><p>Edit</p></Link>
       </div>
       {getCostItemList}
     </div>

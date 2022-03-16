@@ -44,7 +44,9 @@ export default function ResultsContent(props) {
   let costList = []
   for(let i=0; i<props.components.length; i++){
     console.log(props.components[i],"***************")
-    costList.push({"uuid": uuidv4(),"quantity": props.components[i].quantity,"amount": props.components[i].prince,"cost": props.components[i].id}) 
+    if(props.components[i].quantity != 0){
+      costList.push({"uuid": uuidv4(),"quantity": props.components[i].quantity,"amount": props.components[i].prince,"cost": props.components[i].id}) 
+    }
   }
 
   function saveData(){
@@ -84,7 +86,7 @@ export default function ResultsContent(props) {
       .catch((error) => {
         console.error('Error:', error);
       });
-      // document.getElementById("homeRedirect").click();
+      document.getElementById("homeRedirect").click();
     }
 	};
 
