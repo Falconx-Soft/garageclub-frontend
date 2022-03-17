@@ -55,8 +55,8 @@ export default function EditForm(props) {
     };
 
     function updateData(){
-      fetch('api/validations/'+props.tabData.id+"/", {
-        method: 'PUT',
+      fetch('api/update/', {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
@@ -75,12 +75,14 @@ export default function EditForm(props) {
             "sale_vat": true,
             "margin": props.tabData.margin,
             "type": props.tabData.type === "A"? 0 : props.tabData.type === "B"? 1:2,
-            "risk": props.tabData.risk === "" ? 1 : props.tabData.risk
+            "risk": props.tabData.risk === "" ? 1 : props.tabData.risk,
+            "id": props.tabData.id
           } 
         ) 
       }).then((response) => response.json())
         .then((messages) => {console.log("messages");
       });
+      document.getElementById("homeRedirect").click();
     };
 
     
@@ -166,6 +168,7 @@ export default function EditForm(props) {
 
     <a href="/" className='cancelLink'><input className='cancelBtn' type="button" value="Cancel"></input></a>
 		</form>
+    <a href="/" id='homeRedirect' className='homeRedirect'>Reload</a>
     </div>
   );
 }

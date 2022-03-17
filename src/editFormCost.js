@@ -9,7 +9,13 @@ export default function AddComponents(props) {
 			return preData.map((c) => {
                 return c.id === id ? {...c, quantity: c.quantity+1} : c
             })
-		})
+		});
+
+		props.setcostDetails(preData=>{
+			return preData.map((c) => {
+                return c.id === id ? {...c, quantity: c.quantity+1} : c
+            })
+		});
 	}
 
 	function handleSubtractClick(id){
@@ -17,17 +23,16 @@ export default function AddComponents(props) {
 			return preData.map((c) => {
                 return c.id === id && c.quantity !== 0 ? {...c, quantity: c.quantity-1} : c
             })
-		})
+		});
+
+		props.setcostDetails(preData=>{
+			return preData.map((c) => {
+                return c.costID === id ? {...c, quantity: c.quantity-1} : c
+            })
+		});
 	}
 
 	const itemObj = props.editComponents.map(i => {
-		let p = 0;
-		for(let x=0; x<props.costDetails.length; x++){
-			if(props.costDetails[x].costID == i.id){
-				console.log(props.costDetails[x],"*******");
-				p = props.costDetails[x].quantity;
-			};
-		};
         return (
 			<div className="componentItem" key={i.id}>
 				<div className="componentLeftItem">

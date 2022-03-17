@@ -99,7 +99,7 @@ const [state, setState] = React.useState({
 	if(coast != null){
 		let coastTemp = []
 		coast.map(i => {
-			coastTemp.push({"quantity":i.quantity,"costID":i.cost})
+			coastTemp.push({"quantity":i.quantity,"costID":i.cost,"id":i.id})
 		})
 		props.setcostDetails(coastTemp);
 		props.setCostList([])
