@@ -86,18 +86,31 @@ i{
 
 .search-div{
 	display: flex;
-	justify-content: center;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	background-color: #353636;
+	align-items: center;
+	height: 20px;
+}
+
+.search-div>i{
+	margin-left: 15px;
 }
 
 .search-input{
 	width: 300px;
 	height: 20px;
-	border-radius: 20px;
-	padding-left: 10px;
+	margin-left: 10px;
+	color: white;
+	font-size: 20px;
+	background-color:#353636;
+	border: none;
 }
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: white !important;
+	opacity: 1; /* Firefox */
+  }
 
 textarea:focus, input:focus{
     outline: none;

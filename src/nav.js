@@ -78,12 +78,12 @@ export default function Nav(props) {
 
   function toggelDiv(){
     console.log("clicked");
-      if (document.getElementById("search-div").classList.contains("showDiv")){
-        document.getElementById("search-div").classList.remove("showDiv");
-        document.getElementById("search-div").classList.add("hideDiv");
+      if (document.getElementById("div1").classList.contains("hideDiv")){
+        document.getElementById("div1").classList.remove("hideDiv");
+        document.getElementById("div2").classList.add("hideDiv");
       }else{
-        document.getElementById("search-div").classList.add("showDiv");
-        document.getElementById("search-div").classList.remove("hideDiv");
+        document.getElementById("div1").classList.add("hideDiv");
+        document.getElementById("div2").classList.remove("hideDiv");
       }
   }
 
@@ -107,51 +107,57 @@ export default function Nav(props) {
 
   return (
 	<>
-    <div className="blackScreen hidden" id="blackScreen" onClick={handleDrawerClose}>
+    <div id="div1">
+      <div className="blackScreen hidden" id="blackScreen" onClick={handleDrawerClose}>
 
-    </div>
-    <div className="nav-div">
-		<div className="nav-div-left">
-			<i className="fas fa-bars" onClick={handleDrawerOpen}></i>
-	  		<p className="title">Todas Las Valoranions</p>
-		</div>
-		<div className="nav-div-right-btn">
-			<i className="fas fa-search" onClick={toggelDiv}></i>
-		</div>
-    </div>
-	<Drawer
-		sx={{
-		width: drawerWidth,
-		flexShrink: 0,
-		'& .MuiDrawer-paper': {
-			width: drawerWidth,
-			boxSizing: 'border-box',
-		},
-		}}
-		variant="persistent"
-		anchor="left"
-		open={open}
-		className='sidebar'
-	>
-		<DrawerHeader className='sidebar'>
+      </div>
+      <div className="nav-div">
+      <div className="nav-div-left">
+        <i className="fas fa-bars" onClick={handleDrawerOpen}></i>
+          <p className="title">Todas Las Valoranions</p>
+      </div>
+      <div className="nav-div-right-btn">
+        <i className="fas fa-search" onClick={toggelDiv}></i>
+      </div>
+      </div>
+    <Drawer
+      sx={{
+      width: drawerWidth,
+      flexShrink: 0,
+      '& .MuiDrawer-paper': {
+        width: drawerWidth,
+        boxSizing: 'border-box',
+      },
+      }}
+      variant="persistent"
+      anchor="left"
+      open={open}
+      className='sidebar'
+    >
+      <DrawerHeader className='sidebar'>
 
-		<IconButton onClick={handleDrawerClose}>
-      <img src={SideBarLogo}></img>
-			{theme.direction === 'ltr' ? <CloseIcon /> : <ChevronRightIcon />}
-		</IconButton>
-		</DrawerHeader>
-		<List className='sidebarlistdiv'>
-			<ListItem button key={"Valoraciones"}>
-			<ListItemIcon>
-				<img src={SideBar}></img>
-			</ListItemIcon>
-			<ListItemText className='sidebarList' primary={"Valoraciones"} />
-			</ListItem>
-		</List>
-		
-	</Drawer>
-  <div className="search-div hideDiv" id="search-div">
-    <input className="search-input" onChange={handleChange} placeholder="Search..."></input>
+      <IconButton onClick={handleDrawerClose}>
+        <img src={SideBarLogo}></img>
+        {theme.direction === 'ltr' ? <CloseIcon /> : <ChevronRightIcon />}
+      </IconButton>
+      </DrawerHeader>
+      <List className='sidebarlistdiv'>
+        <ListItem button key={"Valoraciones"}>
+        <ListItemIcon>
+          <img src={SideBar}></img>
+        </ListItemIcon>
+        <ListItemText className='sidebarList' primary={"Valoraciones"} />
+        </ListItem>
+      </List>
+      
+    </Drawer>
+  </div>
+
+  <div id="div2" className="hideDiv">
+    <div className="search-div" id="search-div">
+      <i className="fa fa-arrow-left" onClick={toggelDiv}></i>
+      <input className="search-input" onChange={handleChange} placeholder="Search..."></input>
+    </div>
   </div>
 	</>
   );
