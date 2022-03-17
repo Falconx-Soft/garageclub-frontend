@@ -99,7 +99,7 @@ export default function AddForm(props) {
 
     <Link to="/result" className='confirmLink'><input className='confirmBtn' type="button" value="Confirm"></input></Link>
 
-    <a href="/" className='confirmLink'><input className='cancelBtn' type="button" value="Cancel"></input></a>
+    <a href="/" className='confirmLink2'><input className='cancelBtn' type="button" value="Cancel"></input></a>
 		</form>
     </div>
   );

@@ -131,3 +131,16 @@ textarea:focus, input:focus{
 #searchIconsh{
 	cursor: pointer;
 }
+
+.blackScreen{
+	width: 100%;
+	height: 100%;
+	background-color:#353636;
+	opacity: 0.75;
+	position: absolute;
+	z-index: 2;
+}
+
+.hidden{
+	display: none;
+}

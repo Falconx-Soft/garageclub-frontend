@@ -67,10 +67,12 @@ export default function Nav(props) {
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
+    document.getElementById("blackScreen").classList.remove("hidden");
     setOpen(true);
   };
 
   const handleDrawerClose = () => {
+    document.getElementById("blackScreen").classList.add("hidden");
     setOpen(false);
   };
 
@@ -105,6 +107,9 @@ export default function Nav(props) {
 
   return (
 	<>
+    <div className="blackScreen hidden" id="blackScreen" onClick={handleDrawerClose}>
+
+    </div>
     <div className="nav-div">
 		<div className="nav-div-left">
 			<i className="fas fa-bars" onClick={handleDrawerOpen}></i>
@@ -131,7 +136,6 @@ export default function Nav(props) {
 		<DrawerHeader className='sidebar'>
 
 		<IconButton onClick={handleDrawerClose}>
-			{/* <p className="sidebarHeading">GARAGE Club</p> */}
       <img src={SideBarLogo}></img>
 			{theme.direction === 'ltr' ? <CloseIcon /> : <ChevronRightIcon />}
 		</IconButton>

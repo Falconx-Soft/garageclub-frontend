@@ -273,6 +273,10 @@ input[type=number] {
 	width: 100%;
 }
 
+.confirmLink2{
+	width: 100%;
+}
+
 .confirmBtn{
 	width: 100%;
 	height: 48px;
