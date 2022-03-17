@@ -107,7 +107,7 @@ i{
 	border: none;
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+.search-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
 	color: white !important;
 	opacity: 1; /* Firefox */
   }
