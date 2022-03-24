@@ -161,12 +161,12 @@ const [state, setState] = React.useState({
 			<div className="resultFormItem">
 				<p className="resultFormItemLeft">Margin</p>
 				{props.tabData.margin < 0 ? 
-				<p className="resultHeaderIner-div-black">€{props.tabData.margin}</p>
+				<p className="resultHeaderIner-div-black">{parseFloat(props.tabData.margin/props.tabData.purchase).toFixed(2)}%</p>
 				:
 				colorOfBaner === "red"?
-				<p className="resultHeaderIner-div-pink">€{props.tabData.margin}</p>
+				<p className="resultHeaderIner-div-pink">+{parseFloat(props.tabData.margin/props.tabData.purchase).toFixed(2)}%</p>
 				:
-				<p className="resultHeaderIner-div">€{props.tabData.margin}</p>
+				<p className="resultHeaderIner-div">+{parseFloat(props.tabData.margin/props.tabData.purchase).toFixed(2)}%</p>
 				}
 			</div>
 

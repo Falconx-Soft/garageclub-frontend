@@ -124,28 +124,28 @@ export default function ResultsContent(props) {
         </div>
 
         <div className="resultFormItem">
-            <p className="resultFormItemLeft">Reference</p>
+            <p className="resultFormItemLeft" id="reference">Reference</p>
             <p className="resultFormItemRight">{props.formData.reference}</p>
         </div>
 
         <div className="resultFormItem">
-            <p className="resultFormItemLeft">Made and Model</p>
+            <p className="resultFormItemLeft" id="makeNmade">Made and Model</p>
             <p className="resultFormItemRight">{props.formData.makeNmade}</p>
         </div>
 
         <div className="resultFormItem">
-            <p className="resultFormItemLeft">Purchase Amount</p>
+            <p className="resultFormItemLeft" id="purchase">Purchase Amount</p>
             <p className="resultFormItemRight">{props.formData.purchase}€</p>
         </div>
 
         <div className="resultFormItem">
-            <p className="resultFormItemLeft">Selling Amount</p>
+            <p className="resultFormItemLeft" id="selling">Selling Amount</p>
             <p className="resultFormItemRight">{props.formData.selling}€</p>
         </div>
 
         <div className="resultFormItem">
             <p className="resultFormItemLeft">Type</p>
-            <p className="resultFormItemRight">{props.formData.type}</p>
+            <p className="resultFormItemRight">{props.formData.type == 0 ? "A": props.formData.type == 1 ? "B":"C"}</p>
         </div>
 
         <div className="resultFormItem">
