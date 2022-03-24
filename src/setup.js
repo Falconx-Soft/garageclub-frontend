@@ -19,7 +19,7 @@ export default function Setup() {
 
 	const [inputIcion, setinputIcion] = React.useState({"purchase":false,"sell":false});
 
-	const [sorting, setSorting] = React.useState("price");
+	const [sorting, setSorting] = React.useState("date");
 
 	const [marginTemp, setMarginTemp] = React.useState([]);
 

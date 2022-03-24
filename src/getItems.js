@@ -87,7 +87,7 @@ export default function GetItems(props) {
                 fromAddComponents: false
               }
             }}><div className='addDiv'>+ Create New</div></Link>
-          {noOfElement < props.temp.length ? <button className='loadMoreButton' onClick={loadMoredata}>Load more</button> : <button className='loadMoreButton'>Complete</button> } 
+          {noOfElement < props.temp.length ? <button className='loadMoreButton' onClick={loadMoredata}>Load more</button> : <button className='loadMoreButtonComplete'></button> } 
         </div>
     )
 }

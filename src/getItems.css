@@ -95,4 +95,9 @@
 	line-height: 16px;
 	text-transform: uppercase;
 	color: white;
+	cursor: pointer;
+}
+
+.loadMoreButtonComplete{
+	display: none;
 }
