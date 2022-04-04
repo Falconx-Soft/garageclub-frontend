@@ -6,6 +6,7 @@ import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import { Link } from 'react-router-dom';
 import logo1 from './cost1.png';
+import useWindowDimensions from './itemsScreenWidth';
 
 // import SwipeToDelete from 'react-swipe-to-delete-component';
 import SwipeToDelete from 'react-swipe-to-delete-ios';
@@ -13,6 +14,8 @@ import SwipeToDelete from 'react-swipe-to-delete-ios';
 import 'react-swipe-to-delete-component/dist/swipe-to-delete.css';
 
 export default function Item(props) {
+
+	const { height, width } = useWindowDimensions();
 
 	let colorOfBaner = "green"
 	for(let i=0; i<props.marginTemp.temp.length; i++){
@@ -226,29 +229,57 @@ const [state, setState] = React.useState({
 		<div className="outer-div">
 			<div className="item-div">
 				
-				<div className="item-detail-div" onClick={toggleDrawer("bottom", true,
-				props.risk,
-				props.created_at,
-				props.amount_purchase,
-				props.margin,
-				props.type,
-				props.calculation_type,
-				props.cost,
-				props.keyNumber,
-				props.detail,
-				props.id
-				)}>
-					<p className="item-detail-keyNumber">{props.keyNumber}</p>
-					<p className="item-detail-detail">{props.detail}</p>
-					<div className="item-detail-list">
-						<p className="item-detail-list-data">TIPO {props.risk === 1 ? "A":"B"}
-						</p>
-						<i className="fa fa-circle icon"></i>
-						<p className="item-detail-list-data">{props.created_at.split("T")[0]}</p>
-						<i className="fa fa-circle icon"></i>
-						<p className="item-detail-list-data">{props.amount_purchase} €</p>
-					</div>
-				</div>
+				{
+					width < 671 ?
+						<div className="item-detail-div" onClick={toggleDrawer("bottom", true,
+						props.risk,
+						props.created_at,
+						props.amount_purchase,
+						props.margin,
+						props.type,
+						props.calculation_type,
+						props.cost,
+						props.keyNumber,
+						props.detail,
+						props.id
+						)}>
+							<p className="item-detail-keyNumber">{props.keyNumber}</p>
+							<p className="item-detail-detail">{props.detail}</p>
+							<div className="item-detail-list">
+								<p className="item-detail-list-data">TIPO {props.risk === 1 ? "A":"B"}
+								</p>
+								<i className="fa fa-circle icon"></i>
+								<p className="item-detail-list-data">{props.created_at.split("T")[0]}</p>
+								<i className="fa fa-circle icon"></i>
+								<p className="item-detail-list-data">{props.amount_purchase} €</p>
+							</div>
+						</div>
+					:
+						<div className="item-detail-div" onClick={toggleDrawer("right", true,
+						props.risk,
+						props.created_at,
+						props.amount_purchase,
+						props.margin,
+						props.type,
+						props.calculation_type,
+						props.cost,
+						props.keyNumber,
+						props.detail,
+						props.id
+						)}>
+							<p className="item-detail-keyNumber">{props.keyNumber}</p>
+							<p className="item-detail-detail">{props.detail}</p>
+							<div className="item-detail-list">
+								<p className="item-detail-list-data">TIPO {props.risk === 1 ? "A":"B"}
+								</p>
+								<i className="fa fa-circle icon"></i>
+								<p className="item-detail-list-data">{props.created_at.split("T")[0]}</p>
+								<i className="fa fa-circle icon"></i>
+								<p className="item-detail-list-data">{props.amount_purchase} €</p>
+							</div>
+						</div>
+
+				}
 				{props.margin < 0 ?
 					<div className="item-tag item-tag-black">
 						<p>{parseFloat(props.margin/props.amount_purchase).toFixed(2)}%</p>
