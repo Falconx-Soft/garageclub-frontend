@@ -47,7 +47,7 @@ export default function AddComponents(props) {
 	return (
 		<div className="componentsForm">
 			{itemObj}
-			<Link to={{
+			<Link className='submitBtnLink' to={{
 				pathname: "/add",
 				state:{
 					fromAddComponents: true

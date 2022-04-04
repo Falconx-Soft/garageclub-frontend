@@ -6,7 +6,6 @@ import Drawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
 import List from '@mui/material/List';
 import IconButton from '@mui/material/IconButton';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import CloseIcon from '@mui/icons-material/Close';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
@@ -14,6 +13,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import SideBar from './sideBar.png';
 import SideBarLogo from './sideBarLogo.png';
+import Bell from './bell.png';
+import Profile from './profile.png';
 
 const drawerWidth = 240;
 
@@ -119,6 +120,12 @@ export default function Nav(props) {
       <div className="nav-div-right-btn">
         <i className="fas fa-search" onClick={toggelDiv}></i>
       </div>
+
+      <div className="nav-div-right-img">
+      <img className="bell-img" src={Bell}></img>
+      <img src={Profile}></img>
+      </div>
+
       </div>
     <Drawer
       sx={{

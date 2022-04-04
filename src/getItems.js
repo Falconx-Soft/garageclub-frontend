@@ -2,6 +2,7 @@ import Item from './item'
 import './getItems.css';
 import React from "react"
 import 'react-multi-carousel/lib/styles.css';
+import SideBar from './sideBar.png';
 import { Link } from 'react-router-dom';
 
 
@@ -67,27 +68,72 @@ export default function GetItems(props) {
         }
     })
 
+    function handleChange(event) {
+      const m = event.target.value;
+      let hold = []
+      if(m===""){
+          props.setTemp(props.validation);
+      }else{
+        props.validation.map((c) => {
+              var re = new RegExp(m, 'i');
+              if(c && c.reference.match(re)){
+                  hold.push(c);
+              }else if(c && c.model.match(re)){
+                  hold.push(c);
+              }
+          })
+          props.setTemp(hold);
+      }
+    }
+
     function selectSort(name){
         props.setSorting(name)
     }
     
     return (
         <div className='main-div'>
-            <div className='sliderDiv'>
-                <div className='filterOption' onClick={()=> selectSort("date")}>By Date</div>
-                <div className='filterOption' onClick={()=> selectSort("margin")}>By Margin</div>
-                <div className='filterOption' onClick={()=> selectSort("price")}>By Selling Price</div>
+          <div className='desktop-sidebar'>
+              <div className='desktop-sidebar-item'>
+                <img src={SideBar}></img>
+                <p>Valoraciones</p>
+              </div>
+          </div>
+          <div className='desktop-itemArea'>
+            <div className='itemArea'>
+              <div className='search-bar-div'>
+                  <h1>Todas Las Valoranions</h1>
+                
+                <div className='desktop-search-div'>
+                  <div className='search-bar-input-div'>
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <input type="text" placeholder="Search" onChange={handleChange} />
+                  </div>
+
+                  <Link to={{
+                      pathname: "/add",
+                      state:{
+                        fromAddComponents: false
+                      }
+                    }}><div className='desktop-create-btn'>+ Create New</div></Link>
+                </div>
+              </div>
+
+              <div className='sliderDiv'>
+                  <div className='filterOption' onClick={()=> selectSort("date")}>By Date</div>
+                  <div className='filterOption' onClick={()=> selectSort("margin")}>By Margin</div>
+                  <div className='filterOption' onClick={()=> selectSort("price")}>By Selling Price</div>
+              </div>
+
+                {itemObj}
             </div>
-
-            {itemObj}
-
             <Link to={{
               pathname: "/add",
               state:{
                 fromAddComponents: false
               }
             }}><div className='addDiv'>+ Create New</div></Link>
-          {noOfElement < props.temp.length ? <button className='loadMoreButton' onClick={loadMoredata}>Load more</button> : <button className='loadMoreButtonComplete'></button> } 
+            {noOfElement < props.temp.length ? <button className='loadMoreButton' onClick={loadMoredata}>Load more</button> : <button className='loadMoreButtonComplete'></button> } 
+          </div>
         </div>
     )
 }

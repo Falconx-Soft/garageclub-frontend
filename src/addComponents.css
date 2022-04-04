@@ -79,3 +79,20 @@
 	letter-spacing: 1.25px;
 	text-transform: uppercase;
 }
+
+@media (min-width: 670px) {
+
+	.componentsForm{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.componentItem{
+		width: 500px !important;
+	}
+
+	.submitBtnLink{
+		width: 500px;
+	}
+}

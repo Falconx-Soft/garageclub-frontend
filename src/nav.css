@@ -157,3 +157,49 @@ textarea:focus, input:focus{
 .hidden{
 	display: none;
 }
+
+.nav-div-right-img{
+	display: none;
+	align-items: center;
+}
+
+.bell-img{
+	margin-right: 45px;
+	display: block;
+}
+
+.nav-confirm-btn{
+	background-color: #353636;
+	color: white;
+	border: solid 1px white;
+	padding: 15px;
+	display: none;
+}
+
+.nav-cancel-btn{
+	background-color: #353636;
+	color: white;
+	border: none;
+	padding: 15px;
+	margin-right: 10px;
+	display: none;
+}
+
+@media (min-width: 670px) {
+
+	.nav-div-right-img{
+		display: flex;
+	}
+
+	.nav-div-right-btn{
+		display: none;
+	}
+
+	.nav-confirm-btn{
+		display: block;
+	}
+	
+	.nav-cancel-btn{
+		display: block;
+	}
+}

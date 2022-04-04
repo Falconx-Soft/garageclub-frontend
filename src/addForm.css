@@ -318,4 +318,15 @@ input[type=number] {
 	text-transform: uppercase;
 }
 
+@media (min-width: 670px) {
+
+	.addform{
+		display: flex;
+		justify-content: center;
+	}
+
+	.inputForm{
+		width: 500px !important;
+	}
+}
 

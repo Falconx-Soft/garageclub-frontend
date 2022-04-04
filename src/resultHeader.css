@@ -69,3 +69,36 @@
 	line-height: 24px;
 	color: rgba(0, 0, 0, 0.87);
 }
+
+@media (min-width: 670px) {
+
+	.resultHeader-div{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.resultHead{
+		width: 500px !important;
+	}
+
+	.resultTitel{
+		width: 500px !important;
+	}
+
+	.resultForm{
+		width: 500px !important;
+	}
+
+	.coastDiv{
+		width: 500px !important;
+	}
+
+	.cosatItemTotal{
+		width: 500px !important;
+	}
+
+	.submitBtn{
+		width: 500px !important;
+	}
+}
