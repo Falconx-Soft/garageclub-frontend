@@ -81,6 +81,7 @@ const [state, setState] = React.useState({
 	reference,
 	makeNmade,
 	id,
+	amount_sale,
 	) => (event) => {
 		if(created_at != undefined){
 			console.log(risk,created_at,purchase,margin,type,calculation_type,coast)
@@ -90,12 +91,12 @@ const [state, setState] = React.useState({
 					margin:margin,
 					valoracion:calculation_type==0 ? "REBU":"IVA",
 					purchase: purchase,
-					selling: 2,
+					selling: amount_sale,
 					type:type ==0 ? "A": type == 1 ? "B":"C",
 					risk:risk,
 					reference:reference,
 					makeNmade:makeNmade,
-					id:id
+					id:id,
 				}
 			})
 		}
@@ -241,12 +242,13 @@ const [state, setState] = React.useState({
 						props.cost,
 						props.keyNumber,
 						props.detail,
-						props.id
+						props.id,
+						props.amount_sale
 						)}>
 							<p className="item-detail-keyNumber">{props.keyNumber}</p>
 							<p className="item-detail-detail">{props.detail}</p>
 							<div className="item-detail-list">
-								<p className="item-detail-list-data">TIPO {props.risk === 1 ? "A":"B"}
+								<p className="item-detail-list-data">TIPO {props.type === 0 ? "A":props.type === 1 ? "B":"C"}
 								</p>
 								<i className="fa fa-circle icon"></i>
 								<p className="item-detail-list-data">{props.created_at.split("T")[0]}</p>
@@ -265,12 +267,13 @@ const [state, setState] = React.useState({
 						props.cost,
 						props.keyNumber,
 						props.detail,
-						props.id
+						props.id,
+						props.amount_sale
 						)}>
 							<p className="item-detail-keyNumber">{props.keyNumber}</p>
 							<p className="item-detail-detail">{props.detail}</p>
 							<div className="item-detail-list">
-								<p className="item-detail-list-data">TIPO {props.risk === 1 ? "A":"B"}
+								<p className="item-detail-list-data">TIPO {props.type === 0 ? "A":props.type === 1 ? "B":"C"}
 								</p>
 								<i className="fa fa-circle icon"></i>
 								<p className="item-detail-list-data">{props.created_at.split("T")[0]}</p>

@@ -155,7 +155,7 @@ export default function ResultsContent(props) {
 
       </div>
     <CoastItems components={props.components} setTotalAmount={props.setTotalAmount} url="result"/>
-    <button className='submitBtn' onClick={saveData}>Save</button>
+    <button className='submitBtn' onClick={saveData} id='saveBtn'>Save</button>
     <a href="/" id='homeRedirect' className='homeRedirect'>Reload</a>
     </div>
 	</>

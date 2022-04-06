@@ -13,7 +13,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import SideBar from './sideBar.png';
 import SideBarLogo from './sideBarLogo.png';
-import Bell from './bell.png';
 import Profile from './profile.png';
 
 const drawerWidth = 240;
@@ -122,7 +121,6 @@ export default function Nav(props) {
       </div>
 
       <div className="nav-div-right-img">
-      <img className="bell-img" src={Bell}></img>
       <img src={Profile}></img>
       </div>
 

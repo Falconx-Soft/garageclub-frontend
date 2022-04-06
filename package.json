@@ -2,7 +2,7 @@
   "name": "garage_club",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://35.180.210.115:8001/",
+  "proxy": "http://35.180.210.115:8002/",
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",

@@ -98,6 +98,7 @@ export default function Setup() {
 					</Route>
 
 					<Route exact path="/result" >
+						<Nav2 url="/result" />
 						<ResultsContent components={components} setComponents={setComponents} formData={formData} setFormData={setFormData} setTotalAmount={setTotalAmount} totalAmount={totalAmount} inputIcion={inputIcion} setinputIcion={setinputIcion} valoracion={valoracion} marginTemp={marginTemp}/>
 					</Route>
 
