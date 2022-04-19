@@ -43,19 +43,19 @@ export default function Nav2(props) {
 			props.url === "/add" ?
 
 			<>
-				<a href="/"><input className="nav-cancel-btn" type="button" value="CANCEL"></input></a>
-				<Link to="/result"><input className="nav-confirm-btn" type="button" value="CONFIRM"></input></Link>
+				<a href="/" className="noLine"><input className="nav-cancel-btn" type="button" value="CANCEL"></input></a>
+				<Link to="/result" className="noLine"><input className="nav-confirm-btn" type="button" value="CONFIRM"></input></Link>
 			</>
 			:
 			props.url === "/addComponents" ?
 			<>
-				<a href="/"><input className="nav-cancel-btn" type="button" value="CANCEL"></input></a>
-				<Link to="/result"><input className="nav-confirm-btn" type="button" value="Add"></input></Link>
+				<a href="/" className="noLine"><input className="nav-cancel-btn" type="button" value="CANCEL"></input></a>
+				<Link to="/result" className="noLine"><input className="nav-confirm-btn" type="button" value="Add"></input></Link>
 			</>
 			:
 			<>
-				<a href="/"><input className="nav-cancel-btn" type="button" value="CANCEL"></input></a>
-				<Link to="/result"><input className="nav-confirm-btn" type="button" value="Save" onClick={clickSaveData}></input></Link>
+				<a href="/" className="noLine"><input className="nav-cancel-btn" type="button" value="CANCEL"></input></a>
+				<Link to="/result" className="noLine"><input className="nav-confirm-btn" type="button" value="Save" onClick={clickSaveData}></input></Link>
 			</>
 
 

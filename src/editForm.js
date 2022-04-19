@@ -1,10 +1,13 @@
 import './editForm.css';
 import React from "react";
-import CoastItems from "./coastItems";
-import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import logo1 from './cost1.png';
 import { v4 as uuidv4 } from 'uuid';
+
+import Box from '@mui/material/Box';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import List from '@mui/material/List';
+import './addComponents.css';
+
 
 export default function EditForm(props) {
 
@@ -85,6 +88,96 @@ export default function EditForm(props) {
       document.getElementById("homeRedirect").click();
     };
 
+
+
+    // ************************************************right bar start
+
+    const [state, setState] = React.useState({
+      top: false,
+      left: false,
+      bottom: false,
+      right: false,
+    });
+  
+    const toggleDrawer = (anchor, open) => (event) => {
+      if (
+        event &&
+        event.type === 'keydown' &&
+        (event.key === 'Tab' || event.key === 'Shift')
+      ) {
+        return;
+      }
+      setState({ ...state, [anchor]: open });
+    };
+  
+    const list = (anchor) => (
+      <Box
+        sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+        role="presentation"
+        // onClick={toggleDrawer(anchor, true)}
+        // onKeyDown={toggleDrawer(anchor, true)}
+      >
+        <List>
+          {
+            <div className="componentsForm">
+              {itemObj}
+              <input className='submitBtn' type="button" value="CONFIRM" onClick={toggleDrawer("right", false)}></input>
+            </div>
+          }
+        </List>
+      </Box>
+    );
+
+    // *************************Data
+
+    function handleAddClick(id){
+      props.seteditComponents(preData=>{
+        return preData.map((c) => {
+                  return c.id === id ? {...c, quantity: c.quantity+1} : c
+              })
+      });
+  
+      props.setcostDetails(preData=>{
+        return preData.map((c) => {
+                  return c.id === id ? {...c, quantity: c.quantity+1} : c
+              })
+      });
+    }
+  
+    function handleSubtractClick(id){
+      props.seteditComponents(preData=>{
+        return preData.map((c) => {
+                  return c.id === id && c.quantity !== 0 ? {...c, quantity: c.quantity-1} : c
+              })
+      });
+  
+      props.setcostDetails(preData=>{
+        return preData.map((c) => {
+                  return c.costID === id ? {...c, quantity: c.quantity-1} : c
+              })
+      });
+    }
+  
+    const itemObj = props.editComponents.map(i => {
+          return (
+        <div className="componentItem" key={i.id}>
+          <div className="componentLeftItem">
+            <img src={logo1} alt="Logo" />
+          </div>
+          <div className="componentCenerItem">
+            <p>{i.name}</p>
+            <p>{i.prince}€</p>
+          </div>
+          <div className="componentRightItem">
+            <i className="fa fa-minus subtractQuantity" onClick={() => handleSubtractClick(i.id)} aria-hidden="true"></i>
+            <p className='noMargin'>{i.quantity}</p>
+            <i className="fa fa-plus addQuantity" onClick={() => handleAddClick(i.id)} aria-hidden="true"></i>
+          </div>
+        </div>
+          )
+      });
+        
+    // ************************************************right bar end
     
   return (
     <div className="addform">
@@ -160,13 +253,26 @@ export default function EditForm(props) {
     <div className='costDiv'>
       <div className='costDiv-head'>
         <h1>Cost Details</h1>
-        <Link to="/editFormCost" className="editCostLink"><p>Edit</p></Link>
+        <p className="editCostLink" onClick={toggleDrawer("right", true)}>Edit</p>
       </div>
       {getCostItemList}
     </div>
     <input className='confirmBtn' onClick={updateData} type="button" value="Confirm"></input>
-
     <a href="/" className='cancelLink'><input className='cancelBtn' type="button" value="Cancel"></input></a>
+    <div>
+      {['left', 'right', 'top', 'bottom'].map((anchor) => (
+        <React.Fragment key={anchor}>
+          <SwipeableDrawer
+            anchor={anchor}
+            open={state[anchor]}
+            onClose={toggleDrawer(anchor, false)}
+            onOpen={toggleDrawer(anchor, true)}
+          >
+            {list(anchor)}
+          </SwipeableDrawer>
+        </React.Fragment>
+      ))}
+    </div>
 		</form>
     <a href="/" id='homeRedirect' className='homeRedirect'>Reload</a>
     </div>

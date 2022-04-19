@@ -1,14 +1,10 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
 import Nav from './nav';
 import Nav2 from './nav2';
-import Header from './header';
 import GetItems from './getItems';
 import AddForm from './addForm';
 import EditForm from './editForm';
-import AddComponents from './addComponents';
-import EditFormCost from './editFormCost'
 // import Data from './componentsData';
-import ResultNav from './resultNav';
 import ResultsContent from './resultsContent';
 import Sorting from './sorting';
 import React from "react"
@@ -44,6 +40,7 @@ export default function Setup() {
 			})
     }, [])
 	const [components, setComponents] = React.useState([]);
+	
 	const [editComponents, seteditComponents] = React.useState([]);
 	React.useEffect(function() {
 		console.log("Featch components");
@@ -93,10 +90,6 @@ export default function Setup() {
 						<EditForm tabData={tabData} settabData={settabData} costList={costList} setCostList={setCostList} costDetails={costDetails} setcostDetails={setcostDetails} editComponents={editComponents} seteditComponents={seteditComponents} />
 					</Route>
 
-					<Route exact path="/editFormCost" >
-						<EditFormCost costList={costList} setCostList={setCostList} costDetails={costDetails} setcostDetails={setcostDetails} editComponents={editComponents} seteditComponents={seteditComponents}/>
-					</Route>
-
 					<Route exact path="/result" >
 						<Nav2 url="/result" />
 						<ResultsContent components={components} setComponents={setComponents} formData={formData} setFormData={setFormData} setTotalAmount={setTotalAmount} totalAmount={totalAmount} inputIcion={inputIcion} setinputIcion={setinputIcion} valoracion={valoracion} marginTemp={marginTemp}/>
@@ -109,11 +102,6 @@ export default function Setup() {
 					<Route exact path="/add" >
 						<Nav2 url="/add" />
 						<AddForm components={components} setComponents={setComponents} formData={formData} setFormData={setFormData} setTotalAmount={setTotalAmount} inputIcion={inputIcion} setinputIcion={setinputIcion} valoracion={valoracion} setValoracion={setValoracion}/>
-					</Route>
-
-					<Route exact path="/addComponents" >
-						<Nav2 url="/addComponents"/>
-						<AddComponents components={components} setComponents={setComponents}/>
 					</Route>
 					</>
 				:

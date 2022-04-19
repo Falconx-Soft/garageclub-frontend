@@ -230,3 +230,8 @@
 		display: none;
 	}
 }
+
+.noLine{
+	text-decoration: none;
+	cursor: pointer;
+}

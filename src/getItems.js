@@ -109,7 +109,8 @@ export default function GetItems(props) {
                     <input type="text" placeholder="Search" onChange={handleChange} />
                   </div>
 
-                  <Link to={{
+                  <Link className="noLine"
+                      to={{
                       pathname: "/add",
                       state:{
                         fromAddComponents: false

@@ -30,7 +30,7 @@ export default function CoastItems(props) {
 			<div className="coastDivHead">
 				<h1>Cost Details</h1>
 				{props.url == "addForm"? 
-				<Link to="/addComponents" className='coastEditLink'><p className='coastLinkLable'>EDIT</p></Link>:
+				<p className='coastEditLink coastLinkLable' onClick={props.toggleDrawer("right", true)}>EDIT</p>:
 				null
 				}
 			</div>

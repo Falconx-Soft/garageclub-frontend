@@ -3,6 +3,14 @@ import React from "react";
 import CoastItems from "./coastItems";
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+
+import logo1 from './cost1.png';
+import Box from '@mui/material/Box';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import List from '@mui/material/List';
+import './addComponents.css';
+
+
 export default function AddForm(props) {
 
     function handleChange(event) {
@@ -22,6 +30,92 @@ export default function AddForm(props) {
     
     const location = useLocation()
     const {fromAddComponents} = location.state
+
+      // ************************************************right bar start
+
+      const [state, setState] = React.useState({
+        top: false,
+        left: false,
+        bottom: false,
+        right: false,
+      });
+    
+      const toggleDrawer = (anchor, open) => (event) => {
+        if (
+          event &&
+          event.type === 'keydown' &&
+          (event.key === 'Tab' || event.key === 'Shift')
+        ) {
+          return;
+        }
+        setState({ ...state, [anchor]: open });
+      };
+    
+      const list = (anchor) => (
+        <Box
+          sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+          role="presentation"
+          // onClick={toggleDrawer(anchor, true)}
+          // onKeyDown={toggleDrawer(anchor, true)}
+        >
+          <List>
+            {
+              <div className="componentsForm">
+              {itemObj}
+              <input className='submitBtn' type="button" value="CONFIRM" onClick={toggleDrawer("right", false)}></input>
+            </div>
+            }
+          </List>
+        </Box>
+      );
+  
+      // *************************Data
+      const [listItemCount, setListItemCount] = React.useState(0);
+      
+      function handleAddClick(id){
+        props.setComponents(preData=>{
+          return preData.map((c) => {
+                  setListItemCount(prevData=> prevData + 1);
+                    return c.id === id ? {...c, quantity: c.quantity+1} : c
+                })
+        })
+      }
+    
+      function handleSubtractClick(id){
+        props.setComponents(preData=>{
+          return preData.map((c) => {
+                  setListItemCount(prevData=>prevData - 1);
+                    return c.id === id && c.quantity !== 0 ? {...c, quantity: c.quantity-1} : c
+                })
+        })
+      }
+    
+      props.components.sort(function(a, b) {
+        return  a.priority - b.priority;
+        });
+    
+      const itemObj = props.components.map(i => {
+            return (
+          <div className="componentItem" key={i.id}>
+            <div className="componentLeftItem">
+              <img src={logo1} alt="Logo" />
+            </div>
+            <div className="componentCenerItem">
+              <p>{i.name}</p>
+              <p>{i.prince}€</p>
+            </div>
+            <div className="componentRightItem">
+              <i className="fa fa-minus subtractQuantity" onClick={() => handleSubtractClick(i.id)} aria-hidden="true"></i>
+              <p className='noMargin'>{i.quantity}</p>
+              <i className="fa fa-plus addQuantity" onClick={() => handleAddClick(i.id)} aria-hidden="true"></i>
+            </div>
+          </div>
+            )
+        });
+          
+      // ************************************************right bar end
+
+
 
   return (
     <div className="addform">
@@ -93,14 +187,30 @@ export default function AddForm(props) {
       </select>
     </div>
     
-    {fromAddComponents && <CoastItems components={props.components} setTotalAmount = {props.setTotalAmount} url="addForm" /> }
+    {listItemCount > 0 && <CoastItems components={props.components} setTotalAmount = {props.setTotalAmount} toggleDrawer={toggleDrawer} url="addForm" /> }
     
-    { fromAddComponents ? null :<Link to="/addComponents" className='coastLink'><p className='coastLinkLable'>+ ADD COAST</p></Link>}
+    {listItemCount == 0 ? <p className='coastLink coastLinkLable' onClick={toggleDrawer("right", true)}>+ ADD COAST</p> : null}
 
     <Link to="/result" className='confirmLink'><input className='confirmBtn' type="button" value="Confirm"></input></Link>
 
     <a href="/" className='confirmLink2'><input className='cancelBtn' type="button" value="Cancel"></input></a>
 		</form>
+
+    <div>
+      {['left', 'right', 'top', 'bottom'].map((anchor) => (
+        <React.Fragment key={anchor}>
+          <SwipeableDrawer
+            anchor={anchor}
+            open={state[anchor]}
+            onClose={toggleDrawer(anchor, false)}
+            onOpen={toggleDrawer(anchor, true)}
+          >
+            {list(anchor)}
+          </SwipeableDrawer>
+        </React.Fragment>
+      ))}
+    </div>
+
     </div>
   );
 }
