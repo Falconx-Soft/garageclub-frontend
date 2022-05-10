@@ -159,9 +159,14 @@
 }
 
 @media (min-width: 670px) {
-    .khUmdy {
+	.awACv{
 		height: 160px !important;
 		max-height: 160px !important;
+	}
+	
+    .khUmdy {
+		height: 170px !important;
+		max-height: 170px !important;
 	}
 
 	.item-div {
@@ -179,6 +184,8 @@
 
 	#delete-container {
 		width: 630px;
+		height: 160px !important;
+    	max-height: 160px !important;
 	}
 
 	.outer-div {

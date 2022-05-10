@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://35.180.210.115:8002/",
+  "Access-Control-Allow-Origin": "http://35.180.210.115:8002/",
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",

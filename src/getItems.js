@@ -31,13 +31,23 @@ export default function GetItems(props) {
     
 
     React.useEffect(function() {
-        fetch("api/validations/")
+        fetch("http://35.180.210.115:8002/api/validations/", {
+          headers : { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+           }
+          })
             .then(res => res.json())
             .then(data => props.setTemp(data))
     }, [])
 
     React.useEffect(function() {
-        fetch("api/validations/")
+        fetch("http://35.180.210.115:8002/api/validations/", {
+          headers : { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+           }
+          })
             .then(res => res.json())
             .then(data => props.setvalidation(data))
     }, [])

@@ -44,8 +44,14 @@ export default function Item(props) {
 
 
 function DeleteBtn(){
-	fetch('api/validations/'+props.id, { method: 'DELETE' })
+	fetch('http://35.180.210.115:8002/api/validations/'+props.id, { 
+	method: 'DELETE',
+	headers: {
+	  'Content-Type': 'application/json',
+	  'Accept': 'application/json',
+	}, })
 	props.setvalidation(preData=>{
+		console.log("delete")
 		return preData.map((c) => {
 			if(c && c.id !== props.id){
 				return c
@@ -108,7 +114,12 @@ const [state, setState] = React.useState({
 		props.setcostDetails(coastTemp);
 		props.setCostList([])
 		for(let i=0; i<coast.length;i++){
-			fetch("api/costs/"+coast[i].cost+"/")
+			fetch("http://35.180.210.115:8002/api/costs/"+coast[i].cost+"/", {
+				headers : { 
+				  'Content-Type': 'application/json',
+				  'Accept': 'application/json'
+				 }
+				})
 				.then(res => res.json())
 				.then(data => props.setCostList(costList => [...costList, data]))
 			}

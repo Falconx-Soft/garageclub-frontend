@@ -59,7 +59,7 @@ export default function ResultsContent(props) {
     }else if(props.formData.selling == ""){
       document.getElementById("selling").style.border = "solid 1px red";
     }else{
-      fetch('api/validations/', {
+      fetch('http://35.180.210.115:8002/api/validations/', {
         method: 'post',
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify(

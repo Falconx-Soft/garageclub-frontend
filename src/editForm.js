@@ -58,7 +58,7 @@ export default function EditForm(props) {
     };
 
     function updateData(){
-      fetch('api/update/', {
+      fetch('http://35.180.210.115:8002/api/update/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

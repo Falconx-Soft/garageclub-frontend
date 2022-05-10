@@ -20,10 +20,17 @@ export default function Setup() {
 	const [marginTemp, setMarginTemp] = React.useState([]);
 
 	React.useEffect(function() {
-        fetch("api/profitability/")
+        fetch("http://35.180.210.115:8002/api/profitability/", {
+			headers : { 
+			  'Content-Type': 'application/json',
+			  'Accept': 'application/json'
+			 }
+	  
+		  })
             .then(res => res.json())
             .then(data =>{
 				let temp = [];
+				console.log(data,"************")
 				data.map(i => {
 					let temp2 = {"id":i.id, "min_purchase_range":i.min_purchase_range, "max_purchase_range":i.max_purchase_range, "typeA":i.typeA, "typeB":i.typeB, "typeC":i.typeC};
 					temp.push(temp2);
@@ -44,13 +51,20 @@ export default function Setup() {
 	const [editComponents, seteditComponents] = React.useState([]);
 	React.useEffect(function() {
 		console.log("Featch components");
-        fetch("api/costs/")
+        fetch("http://35.180.210.115:8002/api/costs/", {
+			headers : { 
+			  'Content-Type': 'application/json',
+			  'Accept': 'application/json'
+			 }
+	  
+		  })
             .then(res => res.json())
             .then(data =>{
 				let temp = [];
 				data.map(i => {
 					let temp2 = {"id":i.id, "quantity":0, "name":i.description, "prince":i.amount,"priority":i.priority};
 					temp.push(temp2);
+					console.log(i,"************")
 				})
 				setComponents(temp);
 				seteditComponents(temp);
