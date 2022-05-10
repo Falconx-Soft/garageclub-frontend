@@ -44,8 +44,8 @@ export default function Item(props) {
 
 
 function DeleteBtn(){
-	fetch('http://35.180.210.115:8002/api/validations/'+props.id, { 
-	method: 'DELETE',
+	fetch('http://35.180.210.115:8002/api/validations/'+props.id+'/', { 
+	method: 'delete',
 	headers: {
 	  'Content-Type': 'application/json',
 	  'Accept': 'application/json',
