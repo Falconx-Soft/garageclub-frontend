@@ -114,7 +114,7 @@ export default function Nav(props) {
       <div className="nav-div">
       <div className="nav-div-left">
         <i className="fas fa-bars" onClick={handleDrawerOpen}></i>
-          <p className="title">Todas Las Valoranions</p>
+          <p className="title">Todas Las Valoraciones</p>
       </div>
       <div className="nav-div-right-btn">
         <i className="fas fa-search" onClick={toggelDiv}></i>

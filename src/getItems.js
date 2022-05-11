@@ -111,7 +111,7 @@ export default function GetItems(props) {
           <div className='desktop-itemArea'>
             <div className='itemArea'>
               <div className='search-bar-div'>
-                  <h1>Todas Las Valoranions</h1>
+                  <h1>Todas Las Valoraciones</h1>
                 
                 <div className='desktop-search-div'>
                   <div className='search-bar-input-div'>
