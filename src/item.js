@@ -170,18 +170,18 @@ const [state, setState] = React.useState({
 			  }}><p className="resultHeadLink">Edit</p></Link>
       </div>
 
-      <p className="resultTitel">porsche keynne Referencia</p>
+      <p className="resultTitel">{props.detail} {props.keyNumber}</p>
 
       	<div className="resultForm">
 			<div className="resultFormItem">
 				<p className="resultFormItemLeft">Margin</p>
 				{props.tabData.margin < 0 ? 
-				<p className="resultHeaderIner-div-black">{parseFloat(props.tabData.margin/props.tabData.purchase).toFixed(2)}%</p>
+				<p className="resultHeaderIner-div-black">€{props.tabData.margin} ({parseFloat(props.tabData.margin/props.tabData.purchase).toFixed(2)}%)</p>
 				:
 				colorOfBaner === "red"?
-				<p className="resultHeaderIner-div-pink">+{parseFloat(props.tabData.margin/props.tabData.purchase).toFixed(2)}%</p>
+				<p className="resultHeaderIner-div-pink">€{props.tabData.margin} (+{parseFloat(props.tabData.margin/props.tabData.purchase).toFixed(2)}%)</p>
 				:
-				<p className="resultHeaderIner-div">+{parseFloat(props.tabData.margin/props.tabData.purchase).toFixed(2)}%</p>
+				<p className="resultHeaderIner-div">€{props.tabData.margin} (+{parseFloat(props.tabData.margin/props.tabData.purchase).toFixed(2)}%)</p>
 				}
 			</div>
 
@@ -210,11 +210,14 @@ const [state, setState] = React.useState({
 				<p className="resultFormItemRight">{props.tabData.risk}</p>
 			</div>
     	</div>
+		{getCostItemList.length != 0 ?
+		<>
 		<div className="coastDivHead">
 			<h1>Cost Details</h1>
 		</div>
-		
 		{getCostItemList}
+		</>: null
+		}
 		
     </div>
 	</>
@@ -296,14 +299,14 @@ const [state, setState] = React.useState({
 				}
 				{props.margin < 0 ?
 					<div className="item-tag item-tag-black">
-						<p>{parseFloat(props.margin/props.amount_purchase).toFixed(2)}%</p>
+						<p>€{props.margin} ({parseFloat(props.margin/props.amount_purchase).toFixed(2)}%)</p>
 					</div>:
 					colorOfBaner === "red" ?
 					<div className="item-tag item-tag-red">
-						<p>+{parseFloat(props.margin/props.amount_purchase).toFixed(2)}%</p>
+						<p>€{props.margin} (+{parseFloat(props.margin/props.amount_purchase).toFixed(2)}%)</p>
 					</div>:
 					<div className="item-tag item-tag-green">
-						<p>+{parseFloat(props.margin/props.amount_purchase).toFixed(2)}%</p>
+						<p>€{props.margin} (+{parseFloat(props.margin/props.amount_purchase).toFixed(2)}%)</p>
 					</div>
 				}
 				

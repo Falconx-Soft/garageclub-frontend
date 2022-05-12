@@ -39,7 +39,7 @@ export default function CoastItems(props) {
 
 		<div className="cosatItemTotal">
 			<div className="cosatItemTotalLeft">
-			<p>TOTAL COASTES</p>
+			<p>TOTAL COSTES</p>
 			</div>
 			<div className="cosatItemTotalRight">
 			<p><b>€{totalAmount}</b></p>

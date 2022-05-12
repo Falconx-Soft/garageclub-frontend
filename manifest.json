@@ -14,9 +14,9 @@
       "purpose": "any maskable"
     },
     {
-      "src": "public/favicon.ico",
+      "src": "public/favicon.jpeg",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "type": "image/jpeg"
     },
     {
       "src": "public/logo144.png",

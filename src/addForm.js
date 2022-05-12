@@ -62,7 +62,7 @@ export default function AddForm(props) {
             {
               <div className="componentsForm">
               {itemObj}
-              <input className='submitBtn' type="button" value="CONFIRM" onClick={toggleDrawer("right", false)}></input>
+              {/* <input className='submitBtn' type="button" value="CONFIRM" onClick={toggleDrawer("right", false)}></input> */}
             </div>
             }
           </List>
@@ -189,7 +189,7 @@ export default function AddForm(props) {
     
     {listItemCount > 0 && <CoastItems components={props.components} setTotalAmount = {props.setTotalAmount} toggleDrawer={toggleDrawer} url="addForm" /> }
     
-    {listItemCount == 0 ? <p className='coastLink coastLinkLable' onClick={toggleDrawer("right", true)}>+ ADD COAST</p> : null}
+    {listItemCount == 0 ? <p className='coastLink coastLinkLable' onClick={toggleDrawer("right", true)}>+ ADD COST</p> : null}
 
     <Link to="/result" className='confirmLink'><input className='confirmBtn' type="button" value="Confirm"></input></Link>
 

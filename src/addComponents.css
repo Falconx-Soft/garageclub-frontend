@@ -20,7 +20,6 @@
 .noMargin{
 	margin: 0px 10px;
 	font-size: 22px;
-	font-family: 'Roboto';
 	font-style: normal;
 	font-weight: 500;
 	font-size: 16px;
@@ -30,7 +29,6 @@
 
 .componentCenerItem{
 	margin-left: 10px;
-	font-family: 'Roboto';
 	font-style: normal;
 	font-weight: 500;
 	font-size: 16px;

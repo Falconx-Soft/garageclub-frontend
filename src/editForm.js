@@ -121,7 +121,7 @@ export default function EditForm(props) {
           {
             <div className="componentsForm">
               {itemObj}
-              <input className='submitBtn' type="button" value="CONFIRM" onClick={toggleDrawer("right", false)}></input>
+              {/* <input className='submitBtn' type="button" value="CONFIRM" onClick={toggleDrawer("right", false)}></input> */}
             </div>
           }
         </List>
