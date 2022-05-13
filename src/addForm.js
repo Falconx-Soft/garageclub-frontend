@@ -98,7 +98,7 @@ export default function AddForm(props) {
             return (
           <div className="componentItem" key={i.id}>
             <div className="componentLeftItem">
-              <img src={logo1} alt="Logo" />
+              <img src={i.icon} alt="Logo" />
             </div>
             <div className="componentCenerItem">
               <p>{i.name}</p>

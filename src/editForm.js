@@ -36,7 +36,7 @@ export default function EditForm(props) {
           <>
             <div className="cosatItem2">
               <div className="cosatItemLeft">
-                <img src={logo1} alt="Logo" />
+                <img src={i.icon} alt="Logo" />
                 <p>{i.name}</p>
               </div>
               <div className="cosatItemRight">
@@ -162,7 +162,7 @@ export default function EditForm(props) {
           return (
         <div className="componentItem" key={i.id}>
           <div className="componentLeftItem">
-            <img src={logo1} alt="Logo" />
+            <img src={i.icon} alt="Logo" />
           </div>
           <div className="componentCenerItem">
             <p>{i.name}</p>

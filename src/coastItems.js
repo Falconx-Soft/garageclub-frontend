@@ -12,7 +12,7 @@ export default function CoastItems(props) {
 				<>
 					<div className="cosatItem">
 						<div className="cosatItemLeft">
-							<img src={logo1} alt="Logo" />
+							<img src={i.icon} alt="Logo" />
 							<p>{i.name}</p>
 						</div>
 						<div className="cosatItemRight">

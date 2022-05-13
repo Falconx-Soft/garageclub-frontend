@@ -62,7 +62,7 @@ export default function Setup() {
             .then(data =>{
 				let temp = [];
 				data.map(i => {
-					let temp2 = {"id":i.id, "quantity":0, "name":i.description, "prince":i.amount,"priority":i.priority};
+					let temp2 = {"id":i.id, "quantity":0, "name":i.description, "prince":i.amount,"priority":i.priority,"icon":i.icon};
 					temp.push(temp2);
 					console.log(i,"************")
 				})
