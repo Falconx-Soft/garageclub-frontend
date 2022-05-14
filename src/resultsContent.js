@@ -82,11 +82,13 @@ export default function ResultsContent(props) {
       }).then(response => response.json())
       .then(data => {
         console.log('Success:', data);
+        window.alert(data,"success");
       })
       .catch((error) => {
         console.error('Error:', error);
+        window.alert(error,"error");
       });
-      document.getElementById("homeRedirect").click();
+      // document.getElementById("homeRedirect").click();
     }
 	};
 
