@@ -81,15 +81,18 @@ export default function ResultsContent(props) {
         ) 
       }).then(response => response.json())
       .then(data => {
-        setTimeout(() => {  console.log('Success:', data); }, 1000);
+        setTimeout(reLoad, 2000);
       })
       .catch((error) => {
-        setTimeout(() => {  console.error('Error:', error); }, 1000);
+        console.error('Error:', error);
+        window.alert(error);
       });
-      document.getElementById("homeRedirect").click();
     }
 	};
 
+  function reLoad(){
+    document.getElementById("homeRedirect").click();
+  }
   return (
 	  <>
 	<div className="resultHeader-div">
