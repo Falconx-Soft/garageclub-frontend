@@ -83,9 +83,10 @@ export default function EditForm(props) {
           } 
         ) 
       }).then((response) => response.json())
-        .then((messages) => {console.log("messages");
+        .then((messages) => {
+          console.log("messages");
+          document.getElementById("homeRedirect").click();
       });
-      document.getElementById("homeRedirect").click();
     };
 
 

@@ -81,7 +81,7 @@ export default function ResultsContent(props) {
         ) 
       }).then(response => response.json())
       .then(data => {
-        setTimeout(reLoad, 2000);
+        document.getElementById("homeRedirect").click();
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -90,9 +90,7 @@ export default function ResultsContent(props) {
     }
 	};
 
-  function reLoad(){
-    document.getElementById("homeRedirect").click();
-  }
+  
   return (
 	  <>
 	<div className="resultHeader-div">
