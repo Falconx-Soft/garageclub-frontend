@@ -30,6 +30,15 @@ export default function EditForm(props) {
       };
     }, [])
 
+    let updatecostList = []
+    for(let i=0; i<props.editComponents.length; i++){
+      if(props.editComponents[i].quantity != 0){
+
+        updatecostList.push({"uuid": uuidv4(),"quantity": props.editComponents[i].quantity,"amount": props.editComponents[i].prince,"cost": props.editComponents[i].id}) 
+
+      };
+    };
+
     const getCostItemList=props.editComponents.map(i => {
       if(i.quantity != 0){
         return(
@@ -48,16 +57,27 @@ export default function EditForm(props) {
       }
     });
 
-    let updatecostList = []
-    for(let i=0; i<props.editComponents.length; i++){
-      if(props.editComponents[i].quantity != 0){
-
-        updatecostList.push({"uuid": uuidv4(),"quantity": props.editComponents[i].quantity,"amount": props.editComponents[i].prince,"cost": props.editComponents[i].id}) 
-
-      };
-    };
-
     function updateData(){
+
+      var tAmount = 0;
+      props.editComponents.map(i => {
+        if(i.quantity != 0){
+          tAmount += (i.prince * i.quantity)
+        }
+      });
+
+      let margin = 0;
+      if(props.tabData.valoracion === "IVA"){
+        let netMargin = props.tabData.selling - props.tabData.purchase;
+        margin = Math.floor(netMargin - tAmount);
+      }else{
+        let grossMargin = props.tabData.selling - props.tabData.purchase;
+        let netMargin = grossMargin/1.21;
+        margin = Math.floor(netMargin - tAmount);
+      }
+
+
+
       fetch('http://35.180.210.115:8002/api/update/', {
         method: 'POST',
         headers: {
@@ -76,7 +96,7 @@ export default function EditForm(props) {
             "purchase_vat": true,
             "amount_sale": props.tabData.selling,
             "sale_vat": true,
-            "margin": props.tabData.margin,
+            "margin": margin,
             "type": props.tabData.type === "A"? 0 : props.tabData.type === "B"? 1:2,
             "risk": props.tabData.risk === "" ? 1 : props.tabData.risk,
             "id": props.tabData.id
