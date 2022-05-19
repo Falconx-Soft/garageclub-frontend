@@ -104,6 +104,8 @@ export default function ResultsContent(props) {
 			  }}><p className="resultHeadLink">Edit</p></Link>
       </div>
 
+      <p className="resultTitel">{props.formData.makeNmade} {props.formData.reference}</p>
+
       <div className="resultForm">
         <div className="resultFormItem">
             <p className="resultFormItemLeft">Margin</p>
