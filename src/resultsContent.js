@@ -104,8 +104,6 @@ export default function ResultsContent(props) {
 			  }}><p className="resultHeadLink">Edit</p></Link>
       </div>
 
-      <p className="resultTitel">porsche keynne Referencia</p>
-
       <div className="resultForm">
         <div className="resultFormItem">
             <p className="resultFormItemLeft">Margin</p>
