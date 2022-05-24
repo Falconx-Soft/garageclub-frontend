@@ -130,10 +130,14 @@ const [state, setState] = React.useState({
 
     setState({ ...state, [anchor]: open });
   };
-
-  let count = 0;
+  
   const getCostItemList=props.costList.map(i => {
-	  count += 1;
+	  let amount = 0.0;
+	  for(let x=0; x<props.costDetails.length; x++){
+		if(props.costDetails[x].costID == i.id){
+			amount = i.amount * props.costDetails[x].quantity;
+		}
+	}
 		return(
 			<>
 				<div className="cosatItem2">
@@ -142,7 +146,7 @@ const [state, setState] = React.useState({
 						<p>{i.description}</p>
 					</div>
 					<div className="cosatItemRight">
-						<p><b>{i.amount * props.costDetails[count-1].quantity}€</b></p>
+						<p><b>{amount}€</b></p>
 					</div>
 				</div>
 			</>
