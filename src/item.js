@@ -51,7 +51,6 @@ function DeleteBtn(){
 	  'Accept': 'application/json',
 	}, })
 	props.setvalidation(preData=>{
-		console.log("delete")
 		return preData.map((c) => {
 			if(c && c.id !== props.id){
 				return c
@@ -90,7 +89,6 @@ const [state, setState] = React.useState({
 	amount_sale,
 	) => (event) => {
 		if(created_at != undefined){
-			console.log(risk,created_at,purchase,margin,type,calculation_type,coast)
 		
 			props.settabData(preData =>{
 				return{
@@ -130,23 +128,29 @@ const [state, setState] = React.useState({
 
     setState({ ...state, [anchor]: open });
   };
-  
-  const getCostItemList=props.costList.map(i => {
-	  let amount = 0.0;
-	  for(let x=0; x<props.costDetails.length; x++){
-		if(props.costDetails[x].costID == i.id){
-			amount = i.amount * props.costDetails[x].quantity;
+
+  const getCostItemList=props.costDetails.map(i => {
+
+	  let icion = "";
+	  let description = "";
+	  let price = 0.0;
+	  props.costList.map(j => {
+		if(i.costID == j.id){
+			icion = j.icon;
+			description = j.description;
+			price = j.amount;
 		}
-	}
+	  });
+
 		return(
 			<>
 				<div className="cosatItem2">
 					<div className="cosatItemLeft">
-						<img src={i.icon} alt="Logo" />
-						<p>{i.description}</p>
+						<img src={icion} alt="Logo" />
+						<p>{description}</p>
 					</div>
 					<div className="cosatItemRight">
-						<p><b>{amount}€</b></p>
+						<p><b>{i.quantity*price}€</b></p>
 					</div>
 				</div>
 			</>

@@ -30,12 +30,10 @@ export default function Setup() {
             .then(res => res.json())
             .then(data =>{
 				let temp = [];
-				console.log(data,"************")
 				data.map(i => {
 					let temp2 = {"id":i.id, "min_purchase_range":i.min_purchase_range, "max_purchase_range":i.max_purchase_range, "typeA":i.typeA, "typeB":i.typeB, "typeC":i.typeC};
 					temp.push(temp2);
 				})
-				// console.log(temp);
 				setMarginTemp(preValues => {
                     return{
                         ...preValues,
@@ -50,7 +48,6 @@ export default function Setup() {
 	
 	const [editComponents, seteditComponents] = React.useState([]);
 	React.useEffect(function() {
-		console.log("Featch components");
         fetch("http://35.180.210.115:8002/api/costs/", {
 			headers : { 
 			  'Content-Type': 'application/json',
@@ -64,7 +61,6 @@ export default function Setup() {
 				data.map(i => {
 					let temp2 = {"id":i.id, "quantity":0, "name":i.description, "prince":i.amount,"priority":i.priority,"icon":i.icon};
 					temp.push(temp2);
-					console.log(i,"************")
 				})
 				setComponents(temp);
 				seteditComponents(temp);
